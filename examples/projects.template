@@ -1,0 +1,61 @@
+%-- This is the example of a template --%
+<br />
+<b>{title}</b><br />
+<table style="width: 300px; border: 1px solid #333;">
+@@data:template3:{status}@@
+</table>
+<br /><br />
+
+
+%%SUBTEMPLATE(template3.key.6)%%
+  <tr style="background-color: #fc0;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
+
+%%SUBTEMPLATE(flag)%%
+<img src="../skins/images/{flag}" />
+%%ENDSUBTEMPLATE%%
+
+%%SUBTEMPLATE(flag.none)%%
+N/A
+%%ENDSUBTEMPLATE%%
+
+%%ENDSUBTEMPLATE%%
+
+%%SUBTEMPLATE(template3.sel.3)%%
+  <tr style="background-color: #cfc;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666; font-weight: bold; color: green;">{statusname}</td><td>??{flag}:flag??</td></tr>
+
+%%SUBTEMPLATE(flag)%%
+<img src="../skins/images/{flag}" />
+%%ENDSUBTEMPLATE%%
+
+%%SUBTEMPLATE(flag.none)%%
+N/A
+%%ENDSUBTEMPLATE%%
+
+%%ENDSUBTEMPLATE%%
+
+%%SUBTEMPLATE(template3.loop)%%
+  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
+
+%%SUBTEMPLATE(flag)%%
+<img src="../skins/images/{flag}" />
+%%ENDSUBTEMPLATE%%
+
+%%SUBTEMPLATE(flag.none)%%
+N/A
+%%ENDSUBTEMPLATE%%
+
+%%ENDSUBTEMPLATE%%
+
+%%SUBTEMPLATE(template3.loopalt)%%
+  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
+
+%%SUBTEMPLATE(flag)%%
+<img src="../skins/images/{flag}" />
+%%ENDSUBTEMPLATE%%
+
+%%SUBTEMPLATE(flag.none)%%
+N/A
+%%ENDSUBTEMPLATE%%
+
+%%ENDSUBTEMPLATE%%
+
