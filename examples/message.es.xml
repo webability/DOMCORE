@@ -13,4 +13,6 @@
   <entry id="WASHM.noattach"><![CDATA[Error: La conección con la memoria compartida falló.]]></entry>
   <entry id="FileSource.fileerror"><![CDATA[Error: El archivo no se pudo abrir en escritura:&nbsp;]]></entry>
   <entry id="LanguageSource.data"><![CDATA[Error: El identificador y el idioma son necesarios para poder generar el archivo XML del lenguaje.]]></entry>
+  <entry id="config"><![CDATA[Error: No se pudo encontrar el archivo de configuración.]]></entry>
+  <entry id="database"><![CDATA[Error: No se pudo conectar a la base de datos.]]></entry>
 </language>

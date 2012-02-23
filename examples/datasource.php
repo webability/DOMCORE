@@ -60,24 +60,25 @@ foreach($data as $id => $val)
 echo '<hr />';
 
 echo 'Take the entry: WAFile.mkdirproblem<br />';
-echo $Lang->getEntry('WAFile.mkdirproblem') . "<br />";
+echo $data->getEntry('WAFile.mkdirproblem') . "<br />";
 echo '<hr />';
 
 echo 'Write a new entry: datasource.test (The original file, afo AND shared memory are synchronized)<br />';
-echo $Lang->setEntry('datasource.test', 'Prueba de una nueva entrada de la tabla de idiomas') . "<br />";
+$data->setEntry('datasource.test', 'Prueba de una nueva entrada de la tabla de idiomas') . "<br />";
+$Lang->write($data);
 echo '<hr />';
 
 echo 'Show the entry: datasource.test<br />';
-echo $Lang->getEntry('datasource.test') . "<br />";
+echo $data->getEntry('datasource.test') . "<br />";
 echo '<hr />';
 
 echo 'Deletes the entry: datasource.test<br />';
-echo $Lang->delEntry('datasource.test') . "<br />";
+$data->delEntry('datasource.test') . "<br />";
+$Lang->write($data);
 echo '<hr />';
 
 echo 'Show the full language table again, It is supposed to be the same as the first one:<br />';
 
-$data = $Lang->read();
 foreach($data as $id => $val)
 {
   echo "<b>$id</b>: $val<br />";

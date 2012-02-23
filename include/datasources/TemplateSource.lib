@@ -72,9 +72,10 @@ class TemplateSource extends DataSource
     if (self::$debug || $this->localdebug)
       $this->doDebug("include/datasources/TemplateSource->write($data)", WADebug::SYSTEM);
 
+    parent::write($data);
     $this->fastobjectsource->write($data);
-    $this->originsource->write($data);
-    parent::write(new WATemplate($data));
+
+//    $this->originsource->write($data);
     $this->loaded = true;
   }
 
@@ -112,6 +113,5 @@ class TemplateSource extends DataSource
   }
 
 }
-
 
 ?>

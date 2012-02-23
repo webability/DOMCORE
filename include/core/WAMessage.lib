@@ -78,10 +78,7 @@ class WAMessage
       $size = @filesize(self::$messagesfile);
       if ($size)
       {
-        $fp = fopen(self::$messagesfile, 'rb');
-        $data = fread($fp, $size);
-        fclose($fp);
-        $msg = WALanguage::compile($data);
+        $msg = WALanguageCompiler::compile(file_get_contents(self::$messagesfile));
 
         if ($msg && is_array($msg))
         {

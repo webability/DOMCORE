@@ -29,16 +29,26 @@ Thank you !
 
 ----
 
-This is the build 12
+This is the build 13
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
   change this file and add comments on new build.
 
 To do:
--
+- Is WATemplate able to rebuild the original template string ? into TemplateSource line.78
 
 ----
+
+Build 13 2012/02/22:
+- TemplateSource modified to write correctly the template into AFO and shared. TemplateSource cannot write the original template for now
+- examples/language.php modified to use WALanguageCompiler
+- WAMessage modified to use WALanguageCompiler and optimize the file loading
+- WALanguageCompiler modified to use WASimpleXML
+- Static WASimpleXML has been added to convert any simple XML to PHP array
+- Static WALanguage has been moved to WALanguageCompiler
+- WALanguage is now class to keep the languages and is extendable, and implements Iterator
+- Bug removed in WALanguageCompiler to init self::$id and self::$lang on compiling a new language table
 
 Build 12 2011/12/10:
 - WAThrowable->__toString has been modified to print errors correctly on CLI version

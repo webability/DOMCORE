@@ -52,10 +52,10 @@ $table = <<<EOF
 </language>
 EOF;
 
-$entries = WALanguage::Compile($table);
+$lang = new WALanguage($table);
 
 // print day in spanish/mexico
-print "Hoy es ".$entries[strtolower(date("l", time()))] . "<br />";
+print "Hoy es ".$lang->getEntry(strtolower(date("l", time()))) . "<br />";
 
 ?>
 

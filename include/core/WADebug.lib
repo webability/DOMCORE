@@ -80,7 +80,7 @@
 class WADebug
 {
   // Dominion version
-  const VERSION = '1.00.12';
+  const VERSION = '1.00.13';
 
   // All the functions entry
   const SYSTEM = 1;
