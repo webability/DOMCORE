@@ -1,5 +1,5 @@
 DomCore - The PHP basic classes to build powerfull applications
-(c) 2010 Philippe Thomassigny
+(c) 2008-2012 Philippe Thomassigny
 
 DomCore is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ Thank you !
 
 ----
 
-This is the build 13
+This is the build 14
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -37,8 +37,14 @@ This is the build 13
 
 To do:
 - Is WATemplate able to rebuild the original template string ? into TemplateSource line.78
+- adjust documentation of LanguageSource and WALanguage, check WALanguageCompiler
+- documentation for WASimpleXML::tags
 
 ----
+
+Build 14 2012/03/04:
+- Adjustment of all the comments and copyrights in the libraries
+- Added WASimpleXML::tags to extract only the tags*or*data XML hierarchy
 
 Build 13 2012/02/22:
 - TemplateSource modified to write correctly the template into AFO and shared. TemplateSource cannot write the original template for now
