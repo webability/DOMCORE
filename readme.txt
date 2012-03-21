@@ -33,7 +33,7 @@ Languages:
 EN - English language, native language
 FR - French language, maintained by Philippe Thomassigny
 ES - Spanish language, maintained by Philippe Thomassigny
-NL - Dutch language, maintained by Roland van Wanrooy abo@wanrooy.be
+NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
