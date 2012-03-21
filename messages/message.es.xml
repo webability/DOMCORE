@@ -1,5 +1,6 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <language id="message" lang="es">
+<!-- Messages from DomCore -->
   <entry id="WAMessage.notfound"><![CDATA[Error: El mensaje no ha sido encontrado con el ID:&nbsp;]]></entry>
   <entry id="WAObject.badget"><![CDATA[Error: El atributo a leer no existe:&nbsp;]]></entry>
   <entry id="WAObject.badset"><![CDATA[Error: El atributo a escribir no existe:&nbsp;]]></entry>
@@ -12,5 +13,5 @@
   <entry id="WASHM.nosharedmemory"><![CDATA[Error: No hay memoria compartida disponible.]]></entry>
   <entry id="WASHM.noattach"><![CDATA[Error: La conección con la memoria compartida falló.]]></entry>
   <entry id="FileSource.fileerror"><![CDATA[Error: El archivo no se pudo abrir en escritura:&nbsp;]]></entry>
-  <entry id="LanguageSource.data"><![CDATA[Error: El identificador y el idioma son necesarios para poder generar el archivo XML del lenguaje.]]></entry>
+<!-- End Messages from DomCore -->
 </language>

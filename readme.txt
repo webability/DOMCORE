@@ -29,18 +29,32 @@ Thank you !
 
 ----
 
-This is the build 14
+Languages:
+EN - English language, native language
+FR - French language, maintained by Philippe Thomassigny
+ES - Spanish language, maintained by Philippe Thomassigny
+NL - Dutch language, maintained by Roland van Wanrooy abo@wanrooy.be
+
+----
+
+This is the build 15
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
   change this file and add comments on new build.
 
 To do:
-- Is WATemplate able to rebuild the original template string ? into TemplateSource line.78
-- adjust documentation of LanguageSource and WALanguage, check WALanguageCompiler
-- documentation for WASimpleXML::tags
 
 ----
+
+Build 15 2012/03/21:
+- Messages of WASHM moved to WAMessage, static messages removed from WASHM, UML box adjusted
+- Messages of FileSource moved to WAMessage, static messages removed from FileSource, UML box adjusted
+- Netherland NL (Dutch) messages added
+- LanguageSource.data entry has been removed from messages (not used anymore)
+- WAMessage now accept various files for entry and all are loaded when needed, UML box adjusted
+- WAMessage examples modified to use various files for entry
+- Markups added into XML messages to extract them
 
 Build 14 2012/03/04:
 - Adjustment of all the comments and copyrights in the libraries

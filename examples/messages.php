@@ -28,7 +28,7 @@
 <h1>WAMessage example</h1>
 
 Let's build a basic error messaging system in in spanish.<br />
-Then let's call a database connector, and throw an error in spanish if there is an error:<br />
+Then let's call a database connector, and throw an error in spanish if there is an error (simulated):<br />
 <br />
 
 <?php
@@ -44,7 +44,9 @@ $mymessages = array(
 );
 
 WAMessage::addMessages($mymessages);
-// We set spanish messages
+// We set core default spanish messages (optional)
+WAMessage::setMessagesFile('../messages/messages.es.xml');
+// we set our spanish messages ('database' and 'config' entries)
 WAMessage::setMessagesFile('./message.es.xml');
 
 // loading the framework
