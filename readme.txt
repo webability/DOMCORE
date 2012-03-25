@@ -33,19 +33,26 @@ Languages:
 EN - English language, native language
 FR - French language, maintained by Philippe Thomassigny
 ES - Spanish language, maintained by Philippe Thomassigny
-NL - Dutch language, maintained by Roland van Wanrooy abo@wanrooy.be
+NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 15
+This is the build 101
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
   change this file and add comments on new build.
 
 To do:
+- more languages
+- more examples
 
 ----
+
+Build 101 2012/03/24:
+- WASimpleXML::tags() modified to convert several identical tags into an array instead of only the last one
+- netherland translation corrected
+- patterns added, Singleton class added
 
 Build 15 2012/03/21:
 - Messages of WASHM moved to WAMessage, static messages removed from WASHM, UML box adjusted
