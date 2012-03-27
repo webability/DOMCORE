@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 101
+This is the build 102
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -46,8 +46,16 @@ This is the build 101
 To do:
 - more languages
 - more examples
+- patterns: factory, observer, painter, dispatcher, pool, etc.
 
 ----
+
+Build 102 2012/:
+- singleton message entry added into languages
+- Singleton modified to keep instance after constructor
+- Singleton::getInstance simplified and modified to use default called class
+- Multiton.lib implemented
+- multiton message entry added into languages
 
 Build 101 2012/03/24:
 - WASimpleXML::tags() modified to convert several identical tags into an array instead of only the last one

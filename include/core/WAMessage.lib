@@ -53,7 +53,8 @@ class WAMessage
     'WASHM.nosharedmemory' => 'Error: There is no available shared memory.',
     'WASHM.noattach' => 'Error: We could not attach to our shared memory.',
     'FileSource.file eerror' => 'Error: The file could not be opened for writing: ',
-    'Singleton.noclone' => 'Error, the singleton already exists and cannot be cloned: '
+    'Singleton.noclone' => 'Error: the singleton already exists and cannot be cloned: ',
+    'Multiton.noclone' => 'Error: the multiton already exists and cannot be cloned: '
     );
 
   // adds messages for an external static class

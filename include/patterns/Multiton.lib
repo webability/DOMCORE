@@ -1,8 +1,8 @@
 <?php
 
 /*
-    Singleton.lib, DomCore, the WebAbility(r) Core System
-    Contains the singleton pattern class
+    Multiton.lib, DomCore, the WebAbility(r) Core System
+    Contains the multiton pattern class
     (c) 2008-2012 Philippe Thomassigny
 
     This file is part of DomCore
@@ -23,41 +23,44 @@
 
 /* @UML_Box -- Do not edit
 |------------------------------------------------------------------|
-| Singleton : singleton pattern class                              |
+| Multiton : WebAbility single parametered instance pattern class  |
 |------------------------------------------------------------------|
-| - ::instance : array(Singleton)                                  |
+| - ::$instance: array(Multiton)                                   |
+| - $parameter: mixed                                              |
 |------------------------------------------------------------------|
-| + new Singleton()                                                |
-| + ::getInstance($name: string): Singleton extended               |
-| + __clone(): object                                              |
+| + new Multiton($parameter: mixed)                                |
+| + ::getInstance($parameter: mixed, $class: string)               |
+| + __clone()                                                      |
 |------------------------------------------------------------------|
 @End_UML_Box */
 
 
-class Singleton extends WAObject
+class Multiton extends WAObject
 {
   private static $instance = array();
+  protected $parameter = null;
 
-  public function __construct()
+  function __construct($parameter)
   {
-    if (isset(self::$instance[get_class($this)]))
-      throw new PatternError(WAMessage::getMessage('Singleton.noclone').get_class($this));
+    if (isset(self::$instance[get_class($this)][$parameter]))
+      throw new PatternError(WAMessage::getMessage('Multiton.noclone').get_class($this)."[$parameter]");
     parent::__construct();
-    self::$instance[get_class($this)] = $this;
+    self::$instance[get_class($this)][$parameter] = $this;
+    $this->parameter = $parameter;
   }
 
-  public static function getInstance($classname = null)
+  public static function getInstance($parameter, $classname = null)
   {
     if (!$classname)
       $classname = get_called_class();
-    if (!isset(self::$instance[$classname]))
-      new $classname();
-    return self::$instance[$classname];
+    if (!isset(self::$instance[$classname][$parameter]))
+      new $classname($parameter);
+    return self::$instance[$classname][$parameter];
   }
 
   public function __clone()
   {
-    throw new PatternError(WAMessage::getMessage('Singleton.noclone').get_class($this));
+    throw new PatternError(WAMessage::getMessage('Multiton.noclone').get_class($this)."[$this->parameter]");
   }
 
 }

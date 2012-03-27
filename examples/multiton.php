@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>Singleton example</h1>
+<h1>Multiton example</h1>
 
 <?php
 
@@ -37,33 +37,45 @@ date_default_timezone_set('America/Mexico_City');
 
 define ('WADEBUG', false);
 
-class myS extends Singleton
+class myM extends Multiton
 {
-  function __construct()
+  function __construct($parameter)
   {
-    parent::__construct();
+    parent::__construct($parameter);
   }
 
   function getData()
   {
-    return 1;
+    return $this->parameter;
   }
 }
 
-print "Let's get our singleton:<br />";
+print "Let's get our first multiton instance:<br />";
+print "You can get it with a \$M = new myM(10); but this can make an error, you never know if the instance already exists or not. getInstance is the method to use.<br />";
 
-$S = Singleton::getInstance('myS');
-// This is totally equivalent to:
-$S = myS::getInstance();
+$M = Multiton::getInstance(10, 'myM');
+// This is equivalent to
+$M = myM::getInstance(10);
 
-print "A result with our singleton: ".$S->getData() . "<br />";
+print "A result with our multiton ".$M->getData() . "<br />";
 
-print "Let's try to duplicate our singleton and get an error:<br />";
+print "Let's a second multiton instance:<br />";
 
-$S2 = new myS();
+$M = Multiton::getInstance(15, 'myM');
+
+print "A result with our new multiton ".$M->getData() . "<br />";
+
+print "Let's get back the first multiton instance:<br />";
+
+$M = Multiton::getInstance(10, 'myM');
+
+print "A result with our first multiton ".$M->getData() . "<br />";
+
+print "Let's try to duplicate a multiton instance and get an error:<br />";
+
+$M2 = new myM(10);
 // this can make an error too:
-$S2 = clone $S;
-
+$M2 = clone $M;
 
 ?>
 

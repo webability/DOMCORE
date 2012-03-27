@@ -13,5 +13,7 @@
   <entry id="WASHM.nosharedmemory"><![CDATA[Fout: Er is geen gedeelde geheugenruimte beschikbaar.]]></entry>
   <entry id="WASHM.noattach"><![CDATA[Fout: Onze gedeelde geheugenruimte kon niet worden gekoppeld.]]></entry>
   <entry id="FileSource.fileerror"><![CDATA[Fout: Het bestand kon niet worden geopend voor schrijfacties:&nbsp;]]></entry>
+  <entry id="Singleton.nocore"><![CDATA[Fout: de singleton bestaat al en kan niet worden gekloond:&nbsp;]]></entry>
+  <entry id="Multiton.nocore"><![CDATA[Fout: de multiton bestaat al en kan niet worden gekloond:&nbsp;]]></entry>
 <!-- End Messages from DomCore -->
 </language>
