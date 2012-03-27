@@ -50,7 +50,7 @@ To do:
 
 ----
 
-Build 102 2012/:
+Build 102 2012/03/27:
 - singleton message entry added into languages
 - Singleton modified to keep instance after constructor
 - Singleton::getInstance simplified and modified to use default called class
