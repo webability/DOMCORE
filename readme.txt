@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 102
+This is the build 103
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -45,10 +45,17 @@ This is the build 102
 
 To do:
 - more languages
-- more examples
-- patterns: factory, observer, painter, dispatcher, pool, etc.
+- more examples temp, lang, datasources, cache
+- patterns: observer, painter, dispatcher, pool, etc.
+- check SHM object when the class into unserial of the SHM memory does not exists => error ? how to manage ?
+   autoload is NOT catchable when shm_get_mem launch it !
 
 ----
+
+Build 103 2012/04/03:
+- Replaced 'while' by 'foreach' in WATemplate
+- Some new comments into WASHM
+- Factory implemented with its examples
 
 Build 102 2012/03/27:
 - singleton message entry added into languages

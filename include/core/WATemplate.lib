@@ -399,7 +399,7 @@ class WATemplate extends WAClass
       if (!empty($resultelement[0]))
       {
         reset($resultelement);
-        while (list($k, $E) = each($resultelement[0]))
+        foreach($resultelement[0] as $k => $E)
         {
           // we ignore the comments
           $pos = strpos($data, $E);
@@ -429,7 +429,7 @@ class WATemplate extends WAClass
         preg_match_all($reg, $data, $result);
         if(!empty($result[0]))
         {
-          while(list($k, $E) = each($result[0]))
+          foreach($result[0] as $k => $E)
           {
             $resultin = $result[5][$k];
             $resultout = $result[0][$k];
@@ -536,7 +536,7 @@ class WATemplate extends WAClass
     if (!empty($resultelement[0]))
     {
       reset($resultelement);
-      while (list($k, $E) = each($resultelement[0]))
+      foreach($resultelement[0] as $k => $E)
       {
         if ($resultelement[2][$k])
         {
