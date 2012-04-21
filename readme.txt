@@ -52,10 +52,12 @@ To do:
 
 ----
 
-Build 104:
+Build 104 2012/04/21:
 - Error corrected in WATemplate, the ?? metaelement was not working as specified
 - WATemplate modified to support path data access into the data array (i.e. ??VAR1>VAR2>VAR3:templateid?? )
 - WATemplate modified to use hierarchic accesibility on templates (if the template does not exists in a level, it will be searched in the father)
+- WATemplate modified to support a new meta element {{...}} to directly access an entry in the data array
+- New example added for path data and {{...}} meta element
 
 Build 103 2012/04/03:
 - Replaced 'while' by 'foreach' in WATemplate

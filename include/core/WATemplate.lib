@@ -148,7 +148,7 @@ class WATemplate extends WAClass
     return new WATemplate(array('template' => $this->template, 'metaelements' => $this->metaelements, 'subtemplates' => $subt));
   }
 
-  private function getElements($elements, $entry)
+  private function getElements($elements, $entry, $onlyentry = false)
   {
     if (!is_array($elements))
       return null;
@@ -157,19 +157,26 @@ class WATemplate extends WAClass
       $allelements = null;
       foreach($entry as $el)
       {
+        $el = trim($el);
         if (!isset($elements[$el]))
           return null;
-        if (!$allelements)
-          $allelements = $elements[$el];
-        else
+        if (!$onlyentry)
         {
-          if (is_array($elements[$el]))
-            foreach($elements[$el] as $k => $e)
-              $allelements[$k] = $e;
+          if (!$allelements)
+            $allelements = $elements[$el];
+          else
+          {
+            if (is_array($elements[$el]))
+              foreach($elements[$el] as $k => $e)
+                $allelements[$k] = $e;
+          }
         }
         $elements = $elements[$el];
       }
-      return $allelements;
+      if (!$onlyentry)
+        return $allelements;
+      else
+        return $elements;
     }
     elseif (isset($elements[$entry]))
       return $elements[$entry];
@@ -194,6 +201,13 @@ class WATemplate extends WAClass
           $tmp = $this->dumpelements($elements, 0, false);
         }
         $val = $tmp;
+      }
+      if ($e[0] == '{') // it's a SIMPLE ELEMENT
+      {
+        $kval = $e[1];
+        $entry = $e[2];
+        $localelements = $this->getElements($elements, $entry, true);
+        $val = $localelements;
       }
       if ($e[0] == '&') // it's a SIMPLE SUBTEMPLATE
       {
@@ -597,6 +611,7 @@ class WATemplate extends WAClass
                   '%26(%26)(.*?)%26%26|'.     // meta element &&xx&&
                   '%40(%40)(.*?)%40%40|'.     // meta element @@xx@@
                   '%3F(%3F)(.*?)%3F%3F|'.     // meta element ??xx??
+                  '%7B(%7B)(.*?)%7D%7D|'.     // meta element {{xx}}
                   '%21(%21)(.*?)%21%21|'.     // meta element !!xx!! debug
                   '/s';
     preg_match_all($regelement, $data, $resultelement);
@@ -635,7 +650,12 @@ class WATemplate extends WAClass
         elseif ($resultelement[8][$k])
         {
           $xme = rawurldecode($resultelement[8][$k]);
-          $metaelements[] = array(rawurldecode($resultelement[7][$k]), rawurldecode($resultelement[0][$k]), $xme);
+          $metaelements[] = array(rawurldecode($resultelement[7][$k]), rawurldecode($resultelement[0][$k]), $this->getPath($xme));
+        }
+        elseif ($resultelement[10][$k])
+        {
+          $xme = rawurldecode($resultelement[10][$k]);
+          $metaelements[] = array(rawurldecode($resultelement[9][$k]), rawurldecode($resultelement[0][$k]), $xme);
         }
       }
     }
