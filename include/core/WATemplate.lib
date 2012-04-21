@@ -31,9 +31,11 @@
 | - $elements: array                                               |
 |------------------------------------------------------------------|
 | + new WATemplate($data: mixed)                                   |
+| + addFatherTemplates($tmp: array(WATemplate): void               |
 | + getTemplate($id: string): WATemplate                           |
 | + getTemplates(): array                                          |
 | + getClone(): WATemplate                                         |
+| - getElements($elements, $entry): mixed                          |
 | + metaElements($elements: array, $reverse: boolean): void        |
 | + addElement($element: string, $value: string, $reverse: boolean): void|
 | + addElements($elements: array, $reverse: boolean): void         |
@@ -42,6 +44,8 @@
 | - createkey(): string                                            |
 | - compile($data: string, $interprete: boolean): void             |
 | - separateSubTemplate($text: string, $itemnumber: int, $ID: string, $calcsubtemplates: boolean): array|
+| - getPath($data): mixed                                          |
+| - getPathLast($data): mixed                                      |
 | - getMetaElements($data): array                                  |
 | # serial($data: array): void                                     |
 | # unserial($data: array): void                                   |
@@ -99,6 +103,15 @@ class WATemplate extends WAClass
     }
   }
 
+  public function addFatherTemplates($templates)
+  {
+    foreach($templates as $key => $data)
+    {
+      if (!isset($this->subtemplates[$key]))
+        $this->subtemplates[$key] = $data;
+    }
+  }
+
   public function getTemplate($name = null)
   {
     if ($name === null)
@@ -106,8 +119,14 @@ class WATemplate extends WAClass
     if (!isset($this->subtemplates[$name]))
       return null;
     if (is_string($this->subtemplates[$name]))
-      return $this->subtemplates[$this->subtemplates[$name]]->getClone();
-    return $this->subtemplates[$name]->getClone();
+    {
+      $tmp = $this->subtemplates[$this->subtemplates[$name]]->getClone();
+      $tmp->addFatherTemplates($this->subtemplates);
+      return $tmp;
+    }
+    $tmp = $this->subtemplates[$name]->getClone();
+    $tmp->addFatherTemplates($this->subtemplates);
+    return $tmp;
   }
 
   public function getTemplates()
@@ -127,6 +146,34 @@ class WATemplate extends WAClass
         $subt[$id] = $st;
     }
     return new WATemplate(array('template' => $this->template, 'metaelements' => $this->metaelements, 'subtemplates' => $subt));
+  }
+
+  private function getElements($elements, $entry)
+  {
+    if (!is_array($elements))
+      return null;
+    if (is_array($entry))
+    {
+      $allelements = null;
+      foreach($entry as $el)
+      {
+        if (!isset($elements[$el]))
+          return null;
+        if (!$allelements)
+          $allelements = $elements[$el];
+        else
+        {
+          if (is_array($elements[$el]))
+            foreach($elements[$el] as $k => $e)
+              $allelements[$k] = $e;
+        }
+        $elements = $elements[$el];
+      }
+      return $allelements;
+    }
+    elseif (isset($elements[$entry]))
+      return $elements[$entry];
+    return null;
   }
 
   public function metaElements($elements, $reverse = false)
@@ -154,9 +201,10 @@ class WATemplate extends WAClass
         $entry = $e[2];
         $id = $e[3];
         $tmp = $this->getTemplate($id);
-        if ($tmp && isset($elements[$entry]))
+        $localelements = $this->getElements($elements, $entry);
+        if ($tmp && $localelements)
         {
-          $tmp->metaElements(array_merge($elements, is_array($elements[$entry])?$elements[$entry]:array()));
+          $tmp->metaElements(array_merge($elements, is_array($localelements)?$localelements:array()));
         }
         $val = $tmp;
       }
@@ -166,14 +214,15 @@ class WATemplate extends WAClass
         $entry = $e[2];
         $id = $e[3];
         $check = isset($e[4])?$e[4]:null;
-        if (!isset($elements[$entry]) || !is_array($elements[$entry]) || sizeof($elements[$entry]) == 0)
+        $localelements = $this->getElements($elements, $entry);
+        if (!$localelements || !is_array($localelements) || sizeof($localelements) == 0)
         {
           $val = $this->getTemplate($id.'.none');
         }
         else
         {
           $alt = false;
-          foreach($elements[$entry] as $key => $values)
+          foreach($localelements as $key => $values)
           {
             $tmp = $this->getTemplate($id.'.key.'.$key);
             if (!$tmp && isset($values[$check]))
@@ -204,17 +253,19 @@ class WATemplate extends WAClass
         $kval = $e[1];
         $entry = $e[2];
         $id = $e[3];
-        $checkvalue = isset($elements[$entry])?$elements[$entry]:null;
+        $check = isset($e[4])?$e[4]:null;
+        $localelements = $this->getElements($elements, $entry);
+        $checkvalue = $check?(isset($localelements[$check])?$localelements[$check]:null):(!is_array($localelements)?$localelements:null);
         if (!$checkvalue)
           $tmp = $this->getTemplate($id.'.none');
         else
         {
           $tmp = $this->getTemplate($id.'.'.$checkvalue);
-          if (!$tmp)
-            $tmp = $this->getTemplate($id);
         }
-        if ($tmp && isset($elements[$entry]))
-          $tmp->metaElements(array_merge($elements, is_array($elements[$entry])?$elements[$entry]:array()));
+        if (!$tmp)
+          $tmp = $this->getTemplate($id);
+        if ($tmp && isset($localelements))
+          $tmp->metaElements(array_merge($elements, is_array($localelements)?$localelements:array()));
         $val = $tmp;
       }
       if (!$done)
@@ -315,6 +366,8 @@ class WATemplate extends WAClass
     foreach ($elementstmp as $k => $v)
     {
       $k = str_replace("?", "\\?", $k);
+      $k = str_replace("[", "\\[", $k);
+      $k = str_replace("]", "\\]", $k);
       $regin[] = "/".$k."/s";
       $out = str_replace("\\", "\\\\", $v);
       $out = str_replace("$", "\\$", $out);
@@ -520,14 +573,30 @@ class WATemplate extends WAClass
     return $template;
   }
 
+  private function getPath($data)
+  {
+    if (strpos($data, '>') === false)
+      return $data;
+    $xdata = explode('>', $data);
+    return $xdata;
+  }
+
+  private function getPathLast($data)
+  {
+    if (strpos($data, '>') === false)
+      return $data;
+    $xdata = explode('>', $data);
+    return array_pop($xdata);
+  }
+
   private function getMetaElements($data)
   {
     $data = rawurlencode($data);
     // separate meta elements
     $regelement = '/'.
-                  '%3F(%3F)(.*?)%3F%3F|'.     // meta element ??xx??
-                  '%40(%40)(.*?)%40%40|'.     // meta element @@xx@@
                   '%26(%26)(.*?)%26%26|'.     // meta element &&xx&&
+                  '%40(%40)(.*?)%40%40|'.     // meta element @@xx@@
+                  '%3F(%3F)(.*?)%3F%3F|'.     // meta element ??xx??
                   '%21(%21)(.*?)%21%21|'.     // meta element !!xx!! debug
                   '/s';
     preg_match_all($regelement, $data, $resultelement);
@@ -543,7 +612,7 @@ class WATemplate extends WAClass
           $xme = explode(':', rawurldecode($resultelement[2][$k]));
           if (!isset($xme[1]))
             $xme[1] = $xme[0];
-          $metaelements[] = array(rawurldecode($resultelement[1][$k]), rawurldecode($resultelement[0][$k]), $xme[0], $xme[1]);
+          $metaelements[] = array(rawurldecode($resultelement[1][$k]), rawurldecode($resultelement[0][$k]), $this->getPath($xme[0]), $this->getPathLast($xme[1]));
         }
         elseif ($resultelement[4][$k])
         {
@@ -552,7 +621,7 @@ class WATemplate extends WAClass
             $xme[1] = $xme[0];
           if (!isset($xme[2]))
             $xme[2] = null;
-          $metaelements[] = array(rawurldecode($resultelement[3][$k]), rawurldecode($resultelement[0][$k]), $xme[0], $xme[1], $xme[2]);
+          $metaelements[] = array(rawurldecode($resultelement[3][$k]), rawurldecode($resultelement[0][$k]), $this->getPath($xme[0]), $this->getPathLast($xme[1]), $xme[2]);
         }
         elseif ($resultelement[6][$k])
         {
@@ -561,7 +630,7 @@ class WATemplate extends WAClass
             $xme[1] = $xme[0];
           if (!isset($xme[2]))
             $xme[2] = null;
-          $metaelements[] = array(rawurldecode($resultelement[5][$k]), rawurldecode($resultelement[0][$k]), $xme[0], $xme[1], $xme[2]);
+          $metaelements[] = array(rawurldecode($resultelement[5][$k]), rawurldecode($resultelement[0][$k]), $this->getPath($xme[0]), $this->getPathLast($xme[1]), $xme[2]);
         }
         elseif ($resultelement[8][$k])
         {

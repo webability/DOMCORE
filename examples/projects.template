@@ -1,4 +1,5 @@
 %-- This is the example of a template --%
+
 <br />
 <b>{title}</b><br />
 <table style="width: 300px; border: 1px solid #333;">

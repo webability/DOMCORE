@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 103
+This is the build 104
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -48,9 +48,14 @@ To do:
 - more examples temp, lang, datasources, cache
 - patterns: observer, painter, dispatcher, pool, etc.
 - check SHM object when the class into unserial of the SHM memory does not exists => error ? how to manage ?
-   autoload is NOT catchable when shm_get_mem launch it !
+   Note: autoload is NOT catchable when shm_get_mem launch it !
 
 ----
+
+Build 104:
+- Error corrected in WATemplate, the ?? metaelement was not working as specified
+- WATemplate modified to support path data access into the data array (i.e. ??VAR1>VAR2>VAR3:templateid?? )
+- WATemplate modified to use hierarchic accesibility on templates (if the template does not exists in a level, it will be searched in the father)
 
 Build 103 2012/04/03:
 - Replaced 'while' by 'foreach' in WATemplate
