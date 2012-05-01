@@ -36,9 +36,9 @@
 | + getTemplates(): array                                          |
 | + getClone(): WATemplate                                         |
 | - getElements($elements, $entry): mixed                          |
-| + metaElements($elements: array, $reverse: boolean): void        |
+| + metaElements($elements: array, $reverse: boolean, $strict: boolean): void|
 | + addElement($element: string, $value: string, $reverse: boolean): void|
-| + addElements($elements: array, $reverse: boolean): void         |
+| + addElements($elements: array, $reverse: boolean, $strict: boolean): void|
 | + resolve(): string                                              |
 | - dumpelements($elements: array, $level: int, $value: string): string|
 | - createkey(): string                                            |
@@ -183,7 +183,7 @@ class WATemplate extends WAClass
     return null;
   }
 
-  public function metaElements($elements, $reverse = false)
+  public function metaElements($elements, $reverse = false, $strict = false)
   {
     foreach($this->metaelements as $e)
     {
@@ -218,7 +218,7 @@ class WATemplate extends WAClass
         $localelements = $this->getElements($elements, $entry);
         if ($tmp && $localelements)
         {
-          $tmp->metaElements(array_merge($elements, is_array($localelements)?$localelements:array()));
+          $tmp->metaElements(array_merge($elements, is_array($localelements)?$localelements:array()), $reverse, $strict);
         }
         $val = $tmp;
       }
@@ -249,7 +249,7 @@ class WATemplate extends WAClass
               $tmp = $this->getTemplate($id);
             if ($tmp)
             {
-              $tmp->metaElements(array_merge($elements, is_array($values)?$values:array()));
+              $tmp->metaElements(array_merge($elements, is_array($values)?$values:array()), $reverse, $strict);
               if (!isset($this->elements[$kval]))
                 $this->elements[$kval] = array();
               if ($reverse)
@@ -279,7 +279,7 @@ class WATemplate extends WAClass
         if (!$tmp)
           $tmp = $this->getTemplate($id);
         if ($tmp && isset($localelements))
-          $tmp->metaElements(array_merge($elements, is_array($localelements)?$localelements:array()));
+          $tmp->metaElements(array_merge($elements, is_array($localelements)?$localelements:array()), $reverse, $strict);
         $val = $tmp;
       }
       if (!$done)
@@ -292,6 +292,9 @@ class WATemplate extends WAClass
           $this->elements[$kval][] = $val;
       }
     }
+
+    if ($strict)
+      return;
 
     if (!$elements || !is_array($elements))
       return;
@@ -340,9 +343,9 @@ class WATemplate extends WAClass
     }
   }
 
-  public function addElements($elements, $reverse = false)
+  public function addElements($elements, $reverse = false, $strict = false)
   {
-    $this->metaElements($elements, $reverse);
+    $this->metaElements($elements, $reverse, $strict);
   }
 
   public function resolve()
@@ -379,28 +382,20 @@ class WATemplate extends WAClass
     $regout = array();
     foreach ($elementstmp as $k => $v)
     {
-      $k = str_replace("?", "\\?", $k);
-      $k = str_replace("[", "\\[", $k);
-      $k = str_replace("]", "\\]", $k);
-      $regin[] = "/".$k."/s";
-      $out = str_replace("\\", "\\\\", $v);
-      $out = str_replace("$", "\\$", $out);
-      $regout[] = $out;
+      $regin[] = $k;
+      $regout[] = $v;
     }
-    $temp = preg_replace($regin, $regout, $temp);
+    $temp = str_replace($regin, $regout, $temp);
 
     // PASS 2: REPLACE ALL TEXT
     $regin = array();
     $regout = array();
     foreach ($elementstxt as $k => $v)
     {
-      $k = str_replace("?", "\\?", $k);
-      $regin[] = "/".$k."/s";
-      $out = str_replace("\\", "\\\\", $v);
-      $out = str_replace("$", "\\$", $out);
-      $regout[] = $out;
+      $regin[] = $k;
+      $regout[] = $v;
     }
-    $temp = preg_replace($regin, $regout, $temp);
+    $temp = str_replace($regin, $regout, $temp);
     return $temp;
   }
 
@@ -484,8 +479,8 @@ class WATemplate extends WAClass
       }
 
       // Parse the sub templates
-      $reg = '/%25%25(SUBTEMPLATE)%28(.*?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)%25%25ENDSUBTEMPLATE%25%25(%0D){0,1}(%0A){0,1}/s';
-      $regin = '/%25%25(SUBTEMPLATE)%28(.*?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)$/s';
+      $reg = '/%25%25(SUBTEMPLATE)%28(.*?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)%25%25ENDSUBTEMPLATE%25%25(%0D){0,1}(%0A){0,1}|%5B(%5B)(.*?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)%5B%5B%5D%5D(%0D){0,1}(%0A){0,1}/s';
+      $regin = '/%25%25(SUBTEMPLATE)%28(.*?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)$|%5B(%5B)(.*?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)$/s';
 
       $loop = true;
       $subt = array();
@@ -498,9 +493,18 @@ class WATemplate extends WAClass
         {
           foreach($result[0] as $k => $E)
           {
-            $resultin = $result[5][$k];
-            $resultout = $result[0][$k];
-            $resulttemp = $result[2][$k];
+            if ($result[1][$k])
+            {
+              $resultin = $result[5][$k];
+              $resultout = $result[0][$k];
+              $resulttemp = $result[2][$k];
+            }
+            else
+            {
+              $resultin = $result[12][$k];
+              $resultout = $result[0][$k];
+              $resulttemp = $result[9][$k];
+            }
             $loopin = true;
             while ($loopin)
             {
@@ -508,16 +512,29 @@ class WATemplate extends WAClass
               preg_match($regin, $resultin, $subresult);
               if (!empty($subresult[0]))
               { // there are nested %%SUTEMP
-                $resultin = $subresult[5];
-                $resultout = $subresult[0];
-                $resulttemp = $subresult[2];
+                if ($subresult[1])
+                {
+                  $resultin = $subresult[5];
+                  $resultout = $subresult[0];
+                  $resulttemp = $subresult[2];
+                }
+                else
+                {
+                  $resultin = $subresult[12];
+                  $resultout = $subresult[0];
+                  $resulttemp = $subresult[9];
+                }
               }
               else
                 $loopin = false;
             }
-            if($result[5][$k] != $resultin)
+            if($result[1][$k] && $result[5][$k] != $resultin)
             {
               $resultout .= '%25%25ENDSUBTEMPLATE%25%25';
+            }
+            elseif($result[8][$k] && $result[12][$k] != $resultin)
+            {
+              $resultout .= '%5B%5B%5D%5D';
             }
             $pos = strpos($data, $resultout);
             $data = substr_replace($data, '___'.$ID.$itemnumber.'___', $pos, strlen($resultout));

@@ -52,6 +52,13 @@ To do:
 
 ----
 
+Build 105 2012/04/30:
+- preg_replace replaced by str_replace into WATemplate for higher velocity
+- strict mode added into metaelements (data parameters must be used with {{...}} only)
+- strict mode example added
+- New [[id]]...[[]] syntax for subtemplates added with its respective modifications in the examples
+- IMPORTANT NOTE: the %%SUBTEMPLATE()%%...%%ENDSUBTEMPLATE%% syntax will be deprecated soon to be officially replaced by the [[id]]...[[]] syntax. It has been kept for back compatibility for now
+
 Build 104 2012/04/21:
 - Error corrected in WATemplate, the ?? metaelement was not working as specified
 - WATemplate modified to support path data access into the data array (i.e. ??VAR1>VAR2>VAR3:templateid?? )

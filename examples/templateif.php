@@ -42,7 +42,7 @@ Let's build a table.<br />
 The table with a simple loop template and a conditional flag:<br />
 <b>{title}</b><br />
 <table style="width: 300px; border: 1px solid #333;">
-@@data@@
+@@{data}:data@@
 </table>
 <br /><br />
 
@@ -65,7 +65,7 @@ $temp = new WATemplate($template);
 
 $data = array(
   '{title}' => 'Hotels projects:',
-  'data' => array(
+  '{data}' => array(
     array('{id}' => 1, '{name}' => 'Paris', '{status}' => 1, '{statusname}' => 'In project', '{flag}' => 'fr.gif'),
     array('{id}' => 2, '{name}' => 'London', '{status}' => 1, '{statusname}' => 'In project', '{flag}' => 'uk.gif'),
     array('{id}' => 3, '{name}' => 'Madrid', '{status}' => 2, '{statusname}' => 'In construction'),

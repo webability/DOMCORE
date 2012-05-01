@@ -35,11 +35,14 @@ include_once '../include/__autoload.lib';
 setlocale(LC_ALL, 'es_MX.UTF8');
 date_default_timezone_set('America/Mexico_City');
 
+
+// RELAX MODE
+
 $template = <<<EOF
 %-- This is the example of a template --%
 <h3>##maintitle##</h3>
 Let's print some results.<br />
-The recommended syntax of parameters, languages and fields, to identify them rapidly by nature in your templates:<br />
+In the <b>normal mode</b>, the recommended syntax of parameters, languages and fields, to identify them rapidly by nature in your templates:<br />
 <b>__PARAM__</b> are simple parameters used to build the template,<br />
 <b>##entry##</b> are language entries (titles, helps, etc),<br />
 <b>{field}</b> are information fields, and generaly come from a database record.<br />
@@ -90,6 +93,78 @@ $temp->metaElements(
     '{value2}' => 'Pedro Perez',
     '{value3}' => '80%',
   )
+);
+
+print $temp->resolve();
+
+
+
+
+
+// STRICT MODE
+
+$template = <<<EOF
+%-- This is the example of a template --%
+<h3>{{maintitle}}</h3>
+Let's print some results.<br />
+In the <b>strict mode</b>, you may use <b>any type of name syntax</b> without worrying about the names conflict, since they are all included into { { and } }.<br />
+<br />
+<b>It is highly recommended to ALWAYS use the strict mode</b>.<br />
+Note the normal elements (added with ->addElement() ) are NOT metaelements, you need to use { { and } } in the name to be compatible.<br />
+<br />
+<div style="width: {{width}}; height: {{height}}; background-color: {{color}}; color: white; padding: 10px;">
+
+{{title1}}: {{value1}}<br />
+{{title2}}: {{value2}}<br />
+{{title3}}: {{value3}}<br />
+
+</div>
+<br />
+
+EOF;
+
+$temp = new WATemplate($template);
+
+// the use of addElement, addElements or metaelements for SIMPLE ELEMENTS is exactly the same result, use the one that you prefer based on your needs
+// Only the way to pass through the parameters change.
+
+// Simple elements are not meta elements, you need to add the {{ and }}
+
+// all the elements are CUMULATIVE
+$temp->addElement('{{maintitle}}', ' elements');
+$temp->addElement('{{maintitle}}', ' example');
+
+// You can also insert elements in REVERSE mode, i.e. at the beginning of others added elements of same ID
+$temp->addElement('{{maintitle}}', 'Simple', true);
+
+// Some simple parameters in arrays
+$temp->addElement(
+  array('{{width}}', '{{height}}', '{{color}}'),
+  array('300px', '150px', '#008')
+);
+
+// you do not need to add {{ and }} to the elements and metaelements
+
+// Some simple languages
+$temp->addElements(
+  array(
+    'title1' => 'City',
+    'title2' => 'Engineer',
+    'title3' => 'Advance',
+  ),
+  false,
+  true
+);
+
+// Some simple values
+$temp->metaElements(
+  array(
+    'value1' => 'Mexico',
+    'value2' => 'Pedro Perez',
+    'value3' => '80%',
+  ),
+  false,
+  true
 );
 
 print $temp->resolve();

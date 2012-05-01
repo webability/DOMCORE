@@ -37,7 +37,7 @@ date_default_timezone_set('America/Mexico_City');
 
 $template = <<<EOF
 %-- This is the example of a template --%
-Let's debug our entry ingo:<br />
+Let's debug our entry data array:<br />
 <br />
 Only the variables:<br />
 !!list!!<br />

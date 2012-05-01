@@ -26,6 +26,9 @@
 <br />
 
 <h1>WATemplate loops example</h1>
+You may use indistinctively %%SUBTEMPLATE(id)%%...%%ENDSUBTEMPLATE or [[id]]...[[]]<br />
+in your subtemplates definition.<br />
+<br />
 
 <?php
 
@@ -46,9 +49,9 @@ The table with a simple loop template:<br />
 </table>
 <br /><br />
 
-%%SUBTEMPLATE(data)%%
+[[data]]
   <tr><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[]]
 
 The same table with an alternate template:<br />
 <b>{title}</b><br />
@@ -57,13 +60,13 @@ The same table with an alternate template:<br />
 </table>
 <br /><br />
 
-%%SUBTEMPLATE(template2.loop)%%
+[[template2.loop]]
   <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%SUBTEMPLATE(template2.loopalt)%%
+[[template2.loopalt]]
   <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[]]
 
 The same table with an alternate template and special lines templates:<br />
 <b>{title}</b><br />
@@ -90,6 +93,7 @@ The same table with an alternate template and special lines templates:<br />
 %%ENDSUBTEMPLATE%%
 
 EOF;
+
 
 $data = array(
   '{title}' => 'Hotels projects:',
