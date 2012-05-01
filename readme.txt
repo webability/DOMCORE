@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 104
+This is the build 105
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
