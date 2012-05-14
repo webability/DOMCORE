@@ -8,55 +8,55 @@
 <br /><br />
 
 
-%%SUBTEMPLATE(template3.key.6)%%
+[[template3.key.6]]
   <tr style="background-color: #fc0;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
 
-%%SUBTEMPLATE(flag)%%
+[[flag]]
 <img src="../skins/images/{flag}" />
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%SUBTEMPLATE(flag.none)%%
+[[flag.none]]
 N/A
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%SUBTEMPLATE(template3.sel.3)%%
+[[template3.sel.3]]
   <tr style="background-color: #cfc;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666; font-weight: bold; color: green;">{statusname}</td><td>??{flag}:flag??</td></tr>
 
-%%SUBTEMPLATE(flag)%%
+[[flag]]
 <img src="../skins/images/{flag}" />
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%SUBTEMPLATE(flag.none)%%
+[[flag.none]]
 N/A
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%SUBTEMPLATE(template3.loop)%%
+[[template3.loop]]
   <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
 
-%%SUBTEMPLATE(flag)%%
+[[flag]]
 <img src="../skins/images/{flag}" />
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%SUBTEMPLATE(flag.none)%%
+[[flag.none]]
 N/A
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%SUBTEMPLATE(template3.loopalt)%%
+[[template3.loopalt]]
   <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
 
-%%SUBTEMPLATE(flag)%%
+[[flag]]
 <img src="../skins/images/{flag}" />
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%SUBTEMPLATE(flag.none)%%
+[[flag.none]]
 N/A
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%ENDSUBTEMPLATE%%
+[[]]
 

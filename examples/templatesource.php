@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>DataSource example</h1>
+<h1>templateSource example</h1>
 
 <?php
 

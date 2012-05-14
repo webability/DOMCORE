@@ -41,9 +41,9 @@ Let's build a table.<br />
 <br />
 
 The table with an alternate template and special lines templates:<br />
-<b>{title}</b><br />
+<b>{{title}}</b><br />
 <table style="width: 300px; border: 1px solid #333;">
-@@data:template3:{status}@@
+@@data:template3:status@@
 </table>
 <br /><br />
 
@@ -52,52 +52,52 @@ Lets extract some specific data with a specific path:<br />
 ??data>6:oneproject??
 <br />
 Or directly the elements:<br />
-ID: <b>{{data>5>{id} }}</b><br />
-Name: <b>{{data>5>{name} }}</b><br />
-Status:<b>{{data>5>{statusname} }}</b></br>
+ID: <b>{{data>5>id}}</b><br />
+Name: <b>{{data>5>name}}</b><br />
+Status:<b>{{data>5>statusname}}</b></br>
 
-%%SUBTEMPLATE(template3.key.6)%%
-  <tr style="background-color: #fc0;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[template3.key.6]]
+  <tr style="background-color: #fc0;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
+[[]]
 
-%%SUBTEMPLATE(template3.sel.3)%%
-  <tr style="background-color: #cfc;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666; font-weight: bold; color: green;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[template3.sel.3]]
+  <tr style="background-color: #cfc;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666; font-weight: bold; color: green;">{{statusname}}</td></tr>
+[[]]
 
-%%SUBTEMPLATE(template3.loop)%%
-  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[template3.loop]]
+  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
+[[]]
 
-%%SUBTEMPLATE(template3.loopalt)%%
-  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[template3.loopalt]]
+  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
+[[]]
 
-%%SUBTEMPLATE(oneproject)%%
-ID: <b>{id}</b><br />
-Name: <b>{name}</b><br />
-Status:<b>{statusname}</b></br>
-%%ENDSUBTEMPLATE%%
+[[oneproject]]
+ID: <b>{{id}}</b><br />
+Name: <b>{{name}}</b><br />
+Status:<b>{{statusname}}</b></br>
+[[]]
 
 EOF;
 
 $data = array(
-  '{title}' => 'Hotels projects:',
+  'title' => 'Hotels projects:',
   'data' => array(
-    1 => array('{id}' => 1, '{name}' => 'Paris', '{status}' => 1, '{statusname}' => 'In project'),
-    2 => array('{id}' => 2, '{name}' => 'London', '{status}' => 1, '{statusname}' => 'In project'),
-    3 => array('{id}' => 3, '{name}' => 'Madrid', '{status}' => 2, '{statusname}' => 'In construction'),
-    4 => array('{id}' => 4, '{name}' => 'New York', '{status}' => 3, '{statusname}' => 'Finished'),
-    5 => array('{id}' => 5, '{name}' => 'Los Angeles', '{status}' => 1, '{statusname}' => 'In project'),
-    6 => array('{id}' => 6, '{name}' => 'Mexico City', '{status}' => 1, '{statusname}' => 'In project'),
-    7 => array('{id}' => 7, '{name}' => 'Moscu', '{status}' => 1, '{statusname}' => 'In project'),
-    8 => array('{id}' => 8, '{name}' => 'Roma', '{status}' => 1, '{statusname}' => 'In project'),
-    9 => array('{id}' => 9, '{name}' => 'Berlin', '{status}' => 3, '{statusname}' => 'Finished'),
+    1 => array('id' => 1, 'name' => 'Paris', 'status' => 1, 'statusname' => 'In project'),
+    2 => array('id' => 2, 'name' => 'London', 'status' => 1, 'statusname' => 'In project'),
+    3 => array('id' => 3, 'name' => 'Madrid', 'status' => 2, 'statusname' => 'In construction'),
+    4 => array('id' => 4, 'name' => 'New York', 'status' => 3, 'statusname' => 'Finished'),
+    5 => array('id' => 5, 'name' => 'Los Angeles', 'status' => 1, 'statusname' => 'In project'),
+    6 => array('id' => 6, 'name' => 'Mexico City', 'status' => 1, 'statusname' => 'In project'),
+    7 => array('id' => 7, 'name' => 'Moscu', 'status' => 1, 'statusname' => 'In project'),
+    8 => array('id' => 8, 'name' => 'Roma', 'status' => 1, 'statusname' => 'In project'),
+    9 => array('id' => 9, 'name' => 'Berlin', 'status' => 3, 'statusname' => 'Finished'),
   )
 );
 
 $temp = new WATemplate($template);
 
-$temp->metaElements($data);
+$temp->metaElements($data, false, true);
 
 print $temp;
 

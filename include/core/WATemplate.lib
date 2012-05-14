@@ -28,6 +28,7 @@
 | - $template: string                                              |
 | - $metaelements: array                                           |
 | - $subtemplate: array                                            |
+| - $meta: boolean                                                 |
 | - $elements: array                                               |
 |------------------------------------------------------------------|
 | + new WATemplate($data: mixed)                                   |
@@ -81,6 +82,7 @@ class WATemplate extends WAClass
   private $template = '';
   private $metaelements = array();
   private $subtemplates = array();
+  private $meta = false;
 
   private $elements = array();
 
@@ -185,6 +187,10 @@ class WATemplate extends WAClass
 
   public function metaElements($elements, $reverse = false, $strict = false)
   {
+    if ($this->meta)
+      throw new CoreError('Error: the metaElements method can be called only once.');
+    $this->meta = true;
+
     foreach($this->metaelements as $e)
     {
       $done = false;
@@ -207,7 +213,8 @@ class WATemplate extends WAClass
         $kval = $e[1];
         $entry = $e[2];
         $localelements = $this->getElements($elements, $entry, true);
-        $val = $localelements;
+        $this->elements[$kval] = array($localelements);
+        $done = true;
       }
       if ($e[0] == '&') // it's a SIMPLE SUBTEMPLATE
       {
@@ -292,7 +299,6 @@ class WATemplate extends WAClass
           $this->elements[$kval][] = $val;
       }
     }
-
     if ($strict)
       return;
 
@@ -479,8 +485,8 @@ class WATemplate extends WAClass
       }
 
       // Parse the sub templates
-      $reg = '/%25%25(SUBTEMPLATE)%28(.*?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)%25%25ENDSUBTEMPLATE%25%25(%0D){0,1}(%0A){0,1}|%5B(%5B)(.*?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)%5B%5B%5D%5D(%0D){0,1}(%0A){0,1}/s';
-      $regin = '/%25%25(SUBTEMPLATE)%28(.*?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)$|%5B(%5B)(.*?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)$/s';
+      $reg = '/%25%25(SUBTEMPLATE)%28(.+?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)%25%25ENDSUBTEMPLATE%25%25(%0D){0,1}(%0A){0,1}|%5B(%5B)(.+?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)%5B%5B%5D%5D(%0D){0,1}(%0A){0,1}/s';
+      $regin = '/%25%25(SUBTEMPLATE)%28(.+?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)$|%5B(%5B)(.+?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)$/s';
 
       $loop = true;
       $subt = array();
@@ -520,9 +526,9 @@ class WATemplate extends WAClass
                 }
                 else
                 {
-                  $resultin = $subresult[12];
+                  $resultin = $subresult[10];
                   $resultout = $subresult[0];
-                  $resulttemp = $subresult[9];
+                  $resulttemp = $subresult[7];
                 }
               }
               else

@@ -26,8 +26,6 @@
 <br />
 
 <h1>WATemplate loops example</h1>
-You may use indistinctively %%SUBTEMPLATE(id)%%...%%ENDSUBTEMPLATE or [[id]]...[[]]<br />
-in your subtemplates definition.<br />
 <br />
 
 <?php
@@ -43,76 +41,76 @@ $template = <<<EOF
 Let's build a table.<br />
 <br />
 The table with a simple loop template:<br />
-<b>{title}</b><br />
+<b>{{title}}</b><br />
 <table style="width: 300px; border: 1px solid #333;">
 @@data@@
 </table>
 <br /><br />
 
 [[data]]
-  <tr><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
+  <tr><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
 [[]]
 
 The same table with an alternate template:<br />
-<b>{title}</b><br />
+<b>{{title}}</b><br />
 <table style="width: 300px; border: 1px solid #333;">
 @@data:template2@@
 </table>
 <br /><br />
 
 [[template2.loop]]
-  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
+  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
 [[]]
 
 [[template2.loopalt]]
-  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
+  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
 [[]]
 
 The same table with an alternate template and special lines templates:<br />
-<b>{title}</b><br />
+<b>{{title}}</b><br />
 <table style="width: 300px; border: 1px solid #333;">
 @@data:template3:{status}@@
 </table>
 <br /><br />
 
 
-%%SUBTEMPLATE(template3.key.6)%%
-  <tr style="background-color: #fc0;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[template3.key.6]]
+  <tr style="background-color: #fc0;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
+[[]]
 
-%%SUBTEMPLATE(template3.sel.3)%%
-  <tr style="background-color: #cfc;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666; font-weight: bold; color: green;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[template3.sel.3]]
+  <tr style="background-color: #cfc;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666; font-weight: bold; color: green;">{{statusname}}</td></tr>
+[[]]
 
-%%SUBTEMPLATE(template3.loop)%%
-  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[template3.loop]]
+  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
+[[]]
 
-%%SUBTEMPLATE(template3.loopalt)%%
-  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td></tr>
-%%ENDSUBTEMPLATE%%
+[[template3.loopalt]]
+  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td></tr>
+[[]]
 
 EOF;
 
 
 $data = array(
-  '{title}' => 'Hotels projects:',
+  'title' => 'Hotels projects:',
   'data' => array(
-    array('{id}' => 1, '{name}' => 'Paris', '{status}' => 1, '{statusname}' => 'In project'),
-    array('{id}' => 2, '{name}' => 'London', '{status}' => 1, '{statusname}' => 'In project'),
-    array('{id}' => 3, '{name}' => 'Madrid', '{status}' => 2, '{statusname}' => 'In construction'),
-    array('{id}' => 4, '{name}' => 'New York', '{status}' => 3, '{statusname}' => 'Finished'),
-    array('{id}' => 5, '{name}' => 'Los Angeles', '{status}' => 1, '{statusname}' => 'In project'),
-    array('{id}' => 6, '{name}' => 'Mexico City', '{status}' => 1, '{statusname}' => 'In project'),
-    array('{id}' => 7, '{name}' => 'Moscu', '{status}' => 1, '{statusname}' => 'In project'),
-    array('{id}' => 8, '{name}' => 'Roma', '{status}' => 1, '{statusname}' => 'In project'),
-    array('{id}' => 9, '{name}' => 'Berlin', '{status}' => 3, '{statusname}' => 'Finished'),
+    array('id' => 1, 'name' => 'Paris', 'status' => 1, 'statusname' => 'In project'),
+    array('id' => 2, 'name' => 'London', 'status' => 1, 'statusname' => 'In project'),
+    array('id' => 3, 'name' => 'Madrid', 'status' => 2, 'statusname' => 'In construction'),
+    array('id' => 4, 'name' => 'New York', 'status' => 3, 'statusname' => 'Finished'),
+    array('id' => 5, 'name' => 'Los Angeles', 'status' => 1, 'statusname' => 'In project'),
+    array('id' => 6, 'name' => 'Mexico City', 'status' => 1, 'statusname' => 'In project'),
+    array('id' => 7, 'name' => 'Moscu', 'status' => 1, 'statusname' => 'In project'),
+    array('id' => 8, 'name' => 'Roma', 'status' => 1, 'statusname' => 'In project'),
+    array('id' => 9, 'name' => 'Berlin', 'status' => 3, 'statusname' => 'Finished'),
   )
 );
 
 $temp = new WATemplate($template);
 
-$temp->metaElements($data);
+$temp->metaElements($data, false, true);
 
 print $temp;
 

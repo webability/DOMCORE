@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 105
+This is the build 106
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -51,6 +51,12 @@ To do:
    Note: autoload is NOT catchable when shm_get_mem launch it !
 
 ----
+
+Build 106:
+- Error corrected in WATemplate: the [[...]] metaelement was not working as expected sometimes
+- Error corrected in WATemplate: the {{...}} metaelement was not working as expected sometimes
+- Modified WATemplate->metaElements so it can be called only once
+- all examples modified to use [[...]] and strict metaelements
 
 Build 105 2012/04/30:
 - preg_replace replaced by str_replace into WATemplate for higher velocity

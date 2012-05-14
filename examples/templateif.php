@@ -40,46 +40,46 @@ $template = <<<EOF
 Let's build a table.<br />
 <br />
 The table with a simple loop template and a conditional flag:<br />
-<b>{title}</b><br />
+<b>{{title}}</b><br />
 <table style="width: 300px; border: 1px solid #333;">
-@@{data}:data@@
+@@data@@
 </table>
 <br /><br />
 
-%%SUBTEMPLATE(data)%%
-  <tr><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
+[[data]]
+  <tr><td style="border-bottom: 1px dotted #666;">{{id}}</td><td style="border-bottom: 1px dotted #666;">{{name}}</td><td style="border-bottom: 1px dotted #666;">{{statusname}}</td><td>??flag??</td></tr>
 
-%%SUBTEMPLATE(flag)%%
-<img src="../skins/images/{flag}" />
-%%ENDSUBTEMPLATE%%
+[[flag]]
+<img src="../skins/images/{{flag}}" />
+[[]]
 
-%%SUBTEMPLATE(flag.none)%%
+[[flag.none]]
 N/A
-%%ENDSUBTEMPLATE%%
+[[]]
 
-%%ENDSUBTEMPLATE%%
+[[]]
 
 EOF;
 
 $temp = new WATemplate($template);
 
 $data = array(
-  '{title}' => 'Hotels projects:',
-  '{data}' => array(
-    array('{id}' => 1, '{name}' => 'Paris', '{status}' => 1, '{statusname}' => 'In project', '{flag}' => 'fr.gif'),
-    array('{id}' => 2, '{name}' => 'London', '{status}' => 1, '{statusname}' => 'In project', '{flag}' => 'uk.gif'),
-    array('{id}' => 3, '{name}' => 'Madrid', '{status}' => 2, '{statusname}' => 'In construction'),
-    array('{id}' => 4, '{name}' => 'New York', '{status}' => 3, '{statusname}' => 'Finished', '{flag}' => 'us.gif'),
-    array('{id}' => 5, '{name}' => 'Los Angeles', '{status}' => 1, '{statusname}' => 'In project', '{flag}' => 'us.gif'),
-    array('{id}' => 6, '{name}' => 'Mexico City', '{status}' => 1, '{statusname}' => 'In project', '{flag}' => 'mx.gif'),
-    array('{id}' => 7, '{name}' => 'Moscu', '{status}' => 1, '{statusname}' => 'In project'),
-    array('{id}' => 8, '{name}' => 'Roma', '{status}' => 1, '{statusname}' => 'In project'),
-    array('{id}' => 9, '{name}' => 'Berlin', '{status}' => 3, '{statusname}' => 'Finished'),
+  'title' => 'Hotels projects:',
+  'data' => array(
+    array('id' => 1, 'name' => 'Paris', 'status' => 1, 'statusname' => 'In project', 'flag' => 'fr.gif'),
+    array('id' => 2, 'name' => 'London', 'status' => 1, 'statusname' => 'In project', 'flag' => 'uk.gif'),
+    array('id' => 3, 'name' => 'Madrid', 'status' => 2, 'statusname' => 'In construction'),
+    array('id' => 4, 'name' => 'New York', 'status' => 3, 'statusname' => 'Finished', 'flag' => 'us.gif'),
+    array('id' => 5, 'name' => 'Los Angeles', 'status' => 1, 'statusname' => 'In project', 'flag' => 'us.gif'),
+    array('id' => 6, 'name' => 'Mexico City', 'status' => 1, 'statusname' => 'In project', 'flag' => 'mx.gif'),
+    array('id' => 7, 'name' => 'Moscu', 'status' => 1, 'statusname' => 'In project'),
+    array('id' => 8, 'name' => 'Roma', 'status' => 1, 'statusname' => 'In project'),
+    array('id' => 9, 'name' => 'Berlin', 'status' => 3, 'statusname' => 'Finished'),
   )
 
 );
 
-$temp->metaElements($data);
+$temp->metaElements($data, false, true);
 
 print $temp->resolve();
 

@@ -11,7 +11,7 @@
   <meta http-equiv="PRAGMA" content="NO-CACHE" />
   <meta http-equiv="Expires" content="-1" />
 
-  <meta name="Keywords" content="WAJAF, WebAbility" />
+  <meta name="Keywords" content="DomCore, templates, WebAbility" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="Charset" content="UTF-8" />
   <meta name="Language" content="en" />
@@ -38,25 +38,25 @@ date_default_timezone_set('America/Mexico_City');
 $template = <<<EOF
 %-- This is the example of a template --%
 
-&&thetitle&&
+&&title&&
 
-&&thecontent&&
+&&content:thecontent&&
 
-%%SUBTEMPLATE(thetitle)%%
-<h3>{title}</h3>
-%%ENDSUBTEMPLATE%%
+[[title]]
+<h3>{{title}}</h3>
+[[]]
 
-%%SUBTEMPLATE(thecontent)%%
-<p>{content}</p>
-%%ENDSUBTEMPLATE%%
+[[thecontent]]
+<p>{{content}}</p>
+[[]]
 
 EOF;
 
 $temp = new WATemplate($template);
 
 $data = array(
-  '{title}' => 'Blue Martini recipe',
-  '{content}' => '1 oz. Stoli Limonnaya Vodka<br />
+  'title' => 'Blue Martini recipe',
+  'content' => '1 oz. Stoli Limonnaya Vodka<br />
 1 oz. Stoli Razberi Vodka<br />
 splash Sour Mix<br />
 dash Curacao<br />
@@ -64,7 +64,7 @@ dash Curacao<br />
 Garnish with lemon twist<br />'
 );
 
-$temp->metaElements($data);
+$temp->metaElements($data, false, true);
 
 print $temp->resolve();
 

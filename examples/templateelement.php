@@ -11,7 +11,7 @@
   <meta http-equiv="PRAGMA" content="NO-CACHE" />
   <meta http-equiv="Expires" content="-1" />
 
-  <meta name="Keywords" content="WAJAF, WebAbility" />
+  <meta name="Keywords" content="DomCore, templates, WebAbility" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="Charset" content="UTF-8" />
   <meta name="Language" content="en" />
@@ -25,8 +25,9 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WATemplate loops example</h1>
+<h1>WATemplate elements example</h1>
 
+<h2>Relax mode</h2>
 <?php
 
 // We assure any DomCore library we call will be automatically loaded
@@ -47,6 +48,7 @@ In the <b>normal mode</b>, the recommended syntax of parameters, languages and f
 <b>##entry##</b> are language entries (titles, helps, etc),<br />
 <b>{field}</b> are information fields, and generaly come from a database record.<br />
 This syntax is OPTIONAL, however <b>HIGHLY RECOMMENDED</b>.<br />
+Note the normal elements (added with ->addElement() ) are NOT metaelements,  and you must not use { { and } } for them.<br />
 <br />
 <div style="width: __WIDTH__; height: __HEIGHT__; background-color: __COLOR__; color: white; padding: 10px;">
 
@@ -77,18 +79,12 @@ $temp->addElement(
   array('200px', '100px', '#800')
 );
 
-// Some simple languages
-$temp->addElements(
+// metaelements can be called ONLY ONCE
+$temp->metaElements(
   array(
     '##title1##' => 'City',
     '##title2##' => 'Engineer',
     '##title3##' => 'Advance',
-  )
-);
-
-// Some simple values
-$temp->metaElements(
-  array(
     '{value1}' => 'Mexico',
     '{value2}' => 'Pedro Perez',
     '{value3}' => '80%',
@@ -100,19 +96,20 @@ print $temp->resolve();
 
 
 
-
 // STRICT MODE
+
+print "<h2>Strict mode</h2>";
 
 $template = <<<EOF
 %-- This is the example of a template --%
-<h3>{{maintitle}}</h3>
+<h3>##maintitle##</h3>
 Let's print some results.<br />
 In the <b>strict mode</b>, you may use <b>any type of name syntax</b> without worrying about the names conflict, since they are all included into { { and } }.<br />
 <br />
 <b>It is highly recommended to ALWAYS use the strict mode</b>.<br />
-Note the normal elements (added with ->addElement() ) are NOT metaelements, you need to use { { and } } in the name to be compatible.<br />
+Note the normal elements (added with ->addElement() ) are NOT metaelements,  and you must not use { { and } } for them.<br />
 <br />
-<div style="width: {{width}}; height: {{height}}; background-color: {{color}}; color: white; padding: 10px;">
+<div style="width: __WIDTH__; height: __HEIGHT__; background-color: __COLOR__; color: white; padding: 10px;">
 
 {{title1}}: {{value1}}<br />
 {{title2}}: {{value2}}<br />
@@ -128,37 +125,29 @@ $temp = new WATemplate($template);
 // the use of addElement, addElements or metaelements for SIMPLE ELEMENTS is exactly the same result, use the one that you prefer based on your needs
 // Only the way to pass through the parameters change.
 
-// Simple elements are not meta elements, you need to add the {{ and }}
+// Simple elements are NOT meta elements, Do not use {{...}} since they are a metaelement
 
 // all the elements are CUMULATIVE
-$temp->addElement('{{maintitle}}', ' elements');
-$temp->addElement('{{maintitle}}', ' example');
+$temp->addElement('##maintitle##', ' elements');
+$temp->addElement('##maintitle##', ' example');
 
 // You can also insert elements in REVERSE mode, i.e. at the beginning of others added elements of same ID
-$temp->addElement('{{maintitle}}', 'Simple', true);
+$temp->addElement('##maintitle##', 'Simple', true);
 
 // Some simple parameters in arrays
 $temp->addElement(
-  array('{{width}}', '{{height}}', '{{color}}'),
+  array('__WIDTH__', '__HEIGHT__', '__COLOR__'),
   array('300px', '150px', '#008')
 );
 
-// you do not need to add {{ and }} to the elements and metaelements
+// you do not need to add {{ and }} to the elements and metaelements in strict mode. addElements() is a deprecated synonym of metaElements()
 
-// Some simple languages
-$temp->addElements(
+// metaelements can be called ONLY ONCE
+$temp->metaElements(
   array(
     'title1' => 'City',
     'title2' => 'Engineer',
     'title3' => 'Advance',
-  ),
-  false,
-  true
-);
-
-// Some simple values
-$temp->metaElements(
-  array(
     'value1' => 'Mexico',
     'value2' => 'Pedro Perez',
     'value3' => '80%',

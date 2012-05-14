@@ -11,7 +11,7 @@
   <meta http-equiv="PRAGMA" content="NO-CACHE" />
   <meta http-equiv="Expires" content="-1" />
 
-  <meta name="Keywords" content="WAJAF, WebAbility" />
+  <meta name="Keywords" content="DomCore, templates, WebAbility" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="Charset" content="UTF-8" />
   <meta name="Language" content="en" />
