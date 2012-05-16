@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 106
+This is the build 107
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -51,6 +51,9 @@ To do:
    Note: autoload is NOT catchable when shm_get_mem launch it !
 
 ----
+
+Build 107:
+- Error corrected in WATemplate: the subtemplate IDs can be only leters, digits, or special chars: .-_|
 
 Build 106:
 - Error corrected in WATemplate: the [[...]] metaelement was not working as expected sometimes

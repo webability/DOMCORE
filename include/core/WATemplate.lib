@@ -188,7 +188,8 @@ class WATemplate extends WAClass
   public function metaElements($elements, $reverse = false, $strict = false)
   {
     if ($this->meta)
-      throw new CoreError('Error: the metaElements method can be called only once.');
+      return;
+//      throw new CoreError('Error: the metaElements method can be called only once.');
     $this->meta = true;
 
     foreach($this->metaelements as $e)
@@ -485,8 +486,8 @@ class WATemplate extends WAClass
       }
 
       // Parse the sub templates
-      $reg = '/%25%25(SUBTEMPLATE)%28(.+?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)%25%25ENDSUBTEMPLATE%25%25(%0D){0,1}(%0A){0,1}|%5B(%5B)(.+?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)%5B%5B%5D%5D(%0D){0,1}(%0A){0,1}/s';
-      $regin = '/%25%25(SUBTEMPLATE)%28(.+?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)$|%5B(%5B)(.+?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)$/s';
+      $reg = '/%25%25(SUBTEMPLATE)%28([\d\w\.\|_-]+?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)%25%25ENDSUBTEMPLATE%25%25(%0D){0,1}(%0A){0,1}|%5B(%5B)([\d\w\.\|_-]+?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)%5B%5B%5D%5D(%0D){0,1}(%0A){0,1}/s';
+      $regin = '/%25%25(SUBTEMPLATE)%28([\d\w\.\|_-]+?)%29%25%25(%0D){0,1}(%0A){0,1}(.*?)$|%5B(%5B)([\d\w\.\|_-]+?)%5D%5D(%0D){0,1}(%0A){0,1}(.*?)$/s';
 
       $loop = true;
       $subt = array();
