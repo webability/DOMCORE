@@ -52,10 +52,11 @@ To do:
 
 ----
 
-Build 107:
+Build 107 2012/05/16:
 - Error corrected in WATemplate: the subtemplate IDs can be only leters, digits, or special chars: .-_|
+- WATemplate->metaElements just do nothing if it is the second call.
 
-Build 106:
+Build 106 2012/05/13:
 - Error corrected in WATemplate: the [[...]] metaelement was not working as expected sometimes
 - Error corrected in WATemplate: the {{...}} metaelement was not working as expected sometimes
 - Modified WATemplate->metaElements so it can be called only once
