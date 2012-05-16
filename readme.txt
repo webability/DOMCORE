@@ -53,7 +53,7 @@ To do:
 ----
 
 Build 107 2012/05/16:
-- Error corrected in WATemplate: the subtemplate IDs can be only leters, digits, or special chars: .-_|
+- Error corrected in WATemplate: the subtemplate IDs can be only letters, digits, or special chars: .-_|
 - WATemplate->metaElements just do nothing if it is the second call.
 
 Build 106 2012/05/13:
