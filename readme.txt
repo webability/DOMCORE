@@ -49,6 +49,8 @@ To do:
 - patterns: observer, painter, dispatcher, pool, etc.
 - check SHM object when the class into unserial of the SHM memory does not exists => error ? how to manage ?
    Note: autoload is NOT catchable when shm_get_mem launch it !
+- check how to manage if there is no available shared memory and/or semaphores
+- Windows (lack of) shared memory ?
 
 ----
 
