@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 107
+This is the build 108
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -51,6 +51,10 @@ To do:
    Note: autoload is NOT catchable when shm_get_mem launch it !
 
 ----
+
+Build 108 2012/:
+- The WATemplate syntax analyser does not use anymore urlencode and urldecode to gain a lot of compilation time.
+- Error corrected in the compiler regular expression in WATemplate. Sometimes the subtemplate was not correctly replaced
 
 Build 107 2012/05/16:
 - Error corrected in WATemplate: the subtemplate IDs can be only letters, digits, or special chars: .-_|
