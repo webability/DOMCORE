@@ -52,7 +52,7 @@ To do:
 
 ----
 
-Build 108 2012/:
+Build 108 2012/05/18:
 - The WATemplate syntax analyser does not use anymore urlencode and urldecode to gain a lot of compilation time.
 - Error corrected in the compiler regular expression in WATemplate. Sometimes the subtemplate was not correctly replaced
 
