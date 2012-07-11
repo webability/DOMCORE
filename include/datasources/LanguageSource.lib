@@ -95,6 +95,14 @@ class LanguageSource extends DataSource
     if (self::$debug || $this->localdebug)
       $this->doDebug('include/datasources/LanguageSource->read()', WADebug::SYSTEM);
 
+    // datasource exists ?      
+    if (!$this->originsource->isValid())
+    {
+      $this->fastobjectsource->unlink();
+      parent::unlink();
+      return null;
+    }
+
     if ($this->isValid() && $this->loaded)
       return $this->data;
 

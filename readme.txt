@@ -56,6 +56,8 @@ To do:
 
 Build 109:
 - FastObjectSource modified to delete the cache and afo if the origin disappear (is deleted)
+- LanguageSource modified to delete the cache and afo if the origin disappear (is deleted)
+- TemplateSource modified to delete the cache and afo if the origin disappear (is deleted)
 
 Build 108 2012/05/18:
 - The WATemplate syntax analyser does not use anymore urlencode and urldecode to gain a lot of compilation time.
