@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 108
+This is the build 109
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -53,6 +53,9 @@ To do:
 - Windows (lack of) shared memory ?
 
 ----
+
+Build 109:
+- FastObjectSource modified to delete the cache and afo if the origin disappear (is deleted)
 
 Build 108 2012/05/18:
 - The WATemplate syntax analyser does not use anymore urlencode and urldecode to gain a lot of compilation time.

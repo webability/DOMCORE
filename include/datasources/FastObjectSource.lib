@@ -101,6 +101,15 @@ class FastObjectSource extends DataSource
     if (self::$debug || $this->localdebug)
       $this->doDebug('include/datasources/FastObjectSource->read()', WADebug::SYSTEM);
 
+    // datasource exists ?      
+    if (!$this->datasource->isValid())
+    {
+      if ($this->shmsource)
+        $this->shmsource->unlink();
+      parent::unlink();
+      return null;
+    }
+
     if ($this->isValid() && $this->loaded)
       return $this->data;
 
