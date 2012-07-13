@@ -54,7 +54,7 @@ To do:
 
 ----
 
-Build 109:
+Build 109 2012/07/12:
 - FastObjectSource modified to delete the cache and afo if the origin disappear (is deleted)
 - LanguageSource modified to delete the cache and afo if the origin disappear (is deleted)
 - TemplateSource modified to delete the cache and afo if the origin disappear (is deleted)
