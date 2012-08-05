@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 109
+This is the build 110
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -53,6 +53,9 @@ To do:
 - Windows (lack of) shared memory ?
 
 ----
+
+Build 110
+- WAObject adjusted on Strict mode for PHP5.4
 
 Build 109 2012/07/12:
 - FastObjectSource modified to delete the cache and afo if the origin disappear (is deleted)
