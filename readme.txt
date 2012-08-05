@@ -54,7 +54,7 @@ To do:
 
 ----
 
-Build 110
+Build 110 2012/08/04:
 - WAObject adjusted on Strict mode for PHP5.4
 
 Build 109 2012/07/12:
