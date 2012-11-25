@@ -37,13 +37,14 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 110
+This is the build 111
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
   change this file and add comments on new build.
 
 To do:
+- implement semaphores on SHM to read/write memory segments
 - more languages
 - more examples temp, lang, datasources, cache
 - patterns: observer, painter, dispatcher, pool, etc.
@@ -54,6 +55,15 @@ To do:
 
 ----
 
+Build 111 2012/11/26
+- Added a test in FileSource->unlink to unlink only existing files
+- WATemplate modified to support traversable/arrayaccess metaelement objects (that are not be necesarly arrays)
+  for example the DB_Record and DB_Records from dominion are now directly supported as metaelements
+- WATemplate->metaElements is now strict by default
+- WATemplate->metaElements compiler modified to support elements without space (to safeguard the '&&' javascript keyword among others)
+- WAFile->deleteAll modified, the method was trying to delete twice the directory 
+- Semaphores implemented in WASHM to avoid memory access conflicts
+  
 Build 110 2012/08/04:
 - WAObject adjusted on Strict mode for PHP5.4
 

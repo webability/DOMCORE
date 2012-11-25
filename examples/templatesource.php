@@ -70,7 +70,7 @@ $data = array(
 
 );
 
-$temp->metaElements($data);
+$temp->metaElements($data, false, false);
 
 print $temp->resolve();
 

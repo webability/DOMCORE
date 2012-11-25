@@ -62,10 +62,9 @@ $data = array(
     array('{id}' => 8, '{name}' => 'Roma', '{status}' => 1, '{statusname}' => 'In project'),
     array('{id}' => 9, '{name}' => 'Berlin', '{status}' => 3, '{statusname}' => 'Finished'),
   )
-
 );
 
-$temp->metaElements($data);
+$temp->metaElements($data, false, false);
 
 print $temp->resolve();
 

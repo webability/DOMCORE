@@ -153,7 +153,6 @@ class WAFile
         if (is_dir($dir.'/'.$file))
         {
           WAFile::deleteAll($dir.'/'.$file, $reConstraint);
-          rmdir($dir.'/'.$file);
         }
         elseif (is_file($dir.'/'.$file))
           unlink($dir.'/'.$file);

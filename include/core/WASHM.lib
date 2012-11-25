@@ -57,6 +57,7 @@ class WASHM extends WADebug
   private $size = 20971520; // 20 MB by default (1024*1024*20)
   private $memid = 10010;   // our version by default, arbitrary value
   private $shm = null;      // our shared memory segment resource pointer
+  private $seg = null;      // our semaphore to protect access concurrency
 
   public function __construct($size = null, $memid = null)
   {
@@ -77,6 +78,8 @@ class WASHM extends WADebug
 
   private function attach()
   {
+    $this->seg = sem_get($this->memid, 1, 0666, -1); 
+    sem_acquire($this->seg);
     $this->shm = shm_attach($this->memid, $this->size);
     if (!$this->shm)
       throw new SHMError(WAMessage::getMessage('WASHM.noattach'));
@@ -86,6 +89,7 @@ class WASHM extends WADebug
   {
     shm_detach($this->shm);
     $this->shm = null;
+    sem_release($this->seg); 
   }
 
   private function start()

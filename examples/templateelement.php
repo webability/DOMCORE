@@ -88,7 +88,9 @@ $temp->metaElements(
     '{value1}' => 'Mexico',
     '{value2}' => 'Pedro Perez',
     '{value3}' => '80%',
-  )
+  ),
+  false,
+  false
 );
 
 print $temp->resolve();
