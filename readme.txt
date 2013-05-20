@@ -37,14 +37,13 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 111
+This is the build 113
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
   change this file and add comments on new build.
 
 To do:
-- implement semaphores on SHM to read/write memory segments
 - more languages
 - more examples temp, lang, datasources, cache
 - patterns: observer, painter, dispatcher, pool, etc.
@@ -54,6 +53,15 @@ To do:
 - Windows (lack of) shared memory ?
 
 ----
+
+Build 113
+- Bug corrected in WATemplate, the ?? conditional meta keyword was not resolving sub templates if the condition was not a sub array
+- Bug corrected in WATemplate, the @@ loop meta keyword was not resolving sub templates if the condition was not a sub array
+- Added support for '.first', '.last' and '.num' subtemplates in @@ loop meta kewyord
+- Bug corrected in WATemplate, the is_usable method is static thus must be used with WATemplate:: instead of $this->
+
+Build 112 2012/12/19
+- Modified WATemplate to include scalar values for conditional template ??id??
 
 Build 111 2012/11/26
 - Added a test in FileSource->unlink to unlink only existing files

@@ -94,13 +94,13 @@ class WATemplate extends WAClass
     {
       $this->compile($data);
     }
-    else if ($this->is_usable($data))
+    else if (WATemplate::is_usable($data))
     {
       if (isset($data['template']) && is_string($data['template']))
         $this->template = $data['template'];
-      if (isset($data['metaelements']) && $this->is_usable($data['metaelements']))
+      if (isset($data['metaelements']) && WATemplate::is_usable($data['metaelements']))
         $this->metaelements = $data['metaelements'];
-      if (isset($data['subtemplates']) && $this->is_usable($data['subtemplates']))
+      if (isset($data['subtemplates']) && WATemplate::is_usable($data['subtemplates']))
         $this->subtemplates = $data['subtemplates'];
     }
   }
@@ -222,13 +222,12 @@ class WATemplate extends WAClass
         $kval = $e[1];
         $entry = $e[2];
         $id = $e[3];
-        $tmp = $this->getTemplate($id);
+        $val = $this->getTemplate($id);
         $localelements = $this->getElements($elements, $entry);
-        if ($tmp && $localelements)
-        {
-          $tmp->metaElements(WATemplate::merge_objects($elements, $this->is_usable($localelements)?$localelements:array()), $reverse, $strict);
-        }
-        $val = $tmp;
+        if ($val && $localelements)
+          $val->metaElements(WATemplate::merge_objects($elements, WATemplate::is_usable($localelements)?$localelements:array()), $reverse, $strict);
+        elseif ($val)
+          $val->metaElements($elements, $reverse, $strict);
       }
       if ($e[0] == '@') // it's a LOOP
       {
@@ -237,9 +236,11 @@ class WATemplate extends WAClass
         $id = $e[3];
         $check = isset($e[4])?$e[4]:null;
         $localelements = $this->getElements($elements, $entry);
-        if (!$localelements || !$this->is_usable($localelements) || sizeof($localelements) == 0)
+        if (!$localelements || !WATemplate::is_usable($localelements) || sizeof($localelements) == 0)
         {
           $val = $this->getTemplate($id.'.none');
+          if ($val)
+            $val->metaElements($elements, $reverse, $strict);
         }
         else
         {
@@ -252,6 +253,10 @@ class WATemplate extends WAClass
               $tmp = $this->getTemplate($id.'.sel.'.$values[$check]);
             if (!$tmp && $num == 1)
               $tmp = $this->getTemplate($id.'.first');
+            if (!$tmp && WATemplate::is_countable($localelements) && $num == count($localelements))
+              $tmp = $this->getTemplate($id.'.last');
+            if (!$tmp)
+              $tmp = $this->getTemplate($id.'.num.'.$num);
             if (!$tmp && $alt)
               $tmp = $this->getTemplate($id.'.loopalt');
             if (!$tmp)
@@ -260,7 +265,7 @@ class WATemplate extends WAClass
               $tmp = $this->getTemplate($id);
             if ($tmp)
             {
-              $tmp->metaElements(WATemplate::merge_objects($elements, $this->is_usable($values)?$values:array()), $reverse, $strict);
+              $tmp->metaElements(WATemplate::merge_objects($elements, WATemplate::is_usable($values)?$values:array()), $reverse, $strict);
               if (!isset($this->elements[$kval]))
                 $this->elements[$kval] = array();
               if ($reverse)
@@ -281,17 +286,17 @@ class WATemplate extends WAClass
         $id = $e[3];
         $check = isset($e[4])?$e[4]:null;
         $localelements = $this->getElements($elements, $entry);
-        $checkvalue = $check?(isset($localelements[$check])?$localelements[$check]:null):(!$this->is_usable($localelements)?$localelements:null);
+        $checkvalue = $check?(isset($localelements[$check])?$localelements[$check]:null):(WATemplate::is_usable($localelements, true)?$localelements:null);
         if (!$checkvalue)
           $tmp = $this->getTemplate($id.'.none');
         else
-        {
           $tmp = $this->getTemplate($id.'.'.$checkvalue);
-        }
         if (!$tmp)
           $tmp = $this->getTemplate($id);
-        if ($tmp && isset($localelements))
-          $tmp->metaElements(WATemplate::merge_objects($elements, $this->is_usable($localelements)?$localelements:array()), $reverse, $strict);
+        if ($tmp && $localelements)
+          $tmp->metaElements(WATemplate::merge_objects($elements, WATemplate::is_usable($localelements)?$localelements:array()), $reverse, $strict);
+        elseif ($tmp)
+          $tmp->metaElements($elements, $reverse, $strict);
         $val = $tmp;
       }
       if (!$done)
@@ -307,11 +312,11 @@ class WATemplate extends WAClass
     if ($strict)
       return;
 
-    if (!$elements || !$this->is_usable($elements))
+    if (!$elements || !WATemplate::is_usable($elements))
       return;
     foreach($elements as $k => $e)
     {
-      if ($this->is_usable($e)) // we only want normal values. arrays and objects are interpreted in another way
+      if (WATemplate::is_usable($e)) // we only want normal values. arrays and objects are interpreted in another way
         continue;
       if (!isset($this->elements[$k]))
         $this->elements[$k] = array();
@@ -326,7 +331,7 @@ class WATemplate extends WAClass
   {
     if (!$this->elements)
       $this->elements = array();
-    if (!$this->is_usable($element))
+    if (!WATemplate::is_usable($element))
     {
       $element = array($element);
       $value = array($value);
@@ -337,7 +342,7 @@ class WATemplate extends WAClass
         $this->elements[$e] = array();
       if ($reverse)
       {
-        if ($this->is_usable($value[$k]))
+        if (WATemplate::is_usable($value[$k]))
           foreach($value[$k] as $v)
             array_unshift($this->elements[$e], $v);
         else
@@ -345,7 +350,7 @@ class WATemplate extends WAClass
       }
       else
       {
-        if ($this->is_usable($value[$k]))
+        if (WATemplate::is_usable($value[$k]))
           foreach($value[$k] as $v)
             $this->elements[$e][] = $v;
         else
@@ -416,7 +421,7 @@ class WATemplate extends WAClass
   private function dumpelements($elements, $level, $value = false)
   {
     $txt = '';
-    if ($this->is_usable($elements))
+    if (WATemplate::is_usable($elements))
     {
       foreach($elements as $k => $v)
       {
@@ -424,7 +429,7 @@ class WATemplate extends WAClass
         if ($value)
         {
           $txt .= ' :: ';
-          if ($this->is_usable($v))
+          if (WATemplate::is_usable($v))
           {
             $txt .= "<br />";
             $txt .= $this->dumpelements($v, $level + 1, $value);
@@ -437,7 +442,7 @@ class WATemplate extends WAClass
         else
         {
           $txt .= "<br />";
-          if ($this->is_usable($v))
+          if (WATemplate::is_usable($v))
             $txt .= $this->dumpelements($v, $level + 1, $value);
         }
       }
@@ -688,10 +693,16 @@ class WATemplate extends WAClass
     return $metaelements;
   }
 
-  static public function is_usable($data)
+  static public function is_usable($data, $all = false)
   {
     // objects are always traversable over public properties, anything that implement Traversable too, and arrays too
-    return is_array($data) || ($data instanceof Traversable && $data instanceof ArrayAccess);
+    // if all is true, accept also values
+    return is_array($data) || ($data instanceof Traversable && $data instanceof ArrayAccess) || ($all && $data);
+  }
+
+  static public function is_countable($data)
+  {
+    return $data instanceof Countable || is_array($data);
   }
 
   static public function merge_objects($data1, $data2)
@@ -703,6 +714,7 @@ class WATemplate extends WAClass
       $result[$k] = $v;
     return $result;
   }
+
   protected function serial(&$data)
   {
     $data['template'] = $this->template;
