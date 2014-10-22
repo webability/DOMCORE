@@ -54,7 +54,7 @@ To do:
 
 ----
 
-Build 113
+Build 113 2013/05/20
 - Bug corrected in WATemplate, the ?? conditional meta keyword was not resolving sub templates if the condition was not a sub array
 - Bug corrected in WATemplate, the @@ loop meta keyword was not resolving sub templates if the condition was not a sub array
 - Added support for '.first', '.last' and '.num' subtemplates in @@ loop meta kewyord
