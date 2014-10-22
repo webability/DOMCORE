@@ -37,7 +37,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 113
+This is the build 114
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -53,6 +53,11 @@ To do:
 - Windows (lack of) shared memory ?
 
 ----
+
+Build 114 2014/10/21
+- Added patterns to WAFile->deleteAll() with * to delete multiple filtered directories
+  for example deleteAll('/home/sites/base5/domcore/somefiles.*', '\/home\/sites\/base5');
+- Bug corrected in WATemplate, to be sure the array is traversable before using it to resolve a meta element.
 
 Build 113 2013/05/20
 - Bug corrected in WATemplate, the ?? conditional meta keyword was not resolving sub templates if the condition was not a sub array
