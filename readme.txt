@@ -1,5 +1,9 @@
 DomCore - The PHP basic classes to build powerfull applications
-(c) 2008-2012 Philippe Thomassigny
+Powerfull code-independant template system, 
+multi-language system, debug objects, 
+and patterns implementation in PHP
+
+(c) 2008-2014 Philippe Thomassigny
 
 DomCore is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
