@@ -69,7 +69,7 @@ The same table with an alternate template:<br />
 The same table with an alternate template and special lines templates:<br />
 <b>{{title}}</b><br />
 <table style="width: 300px; border: 1px solid #333;">
-@@data:template3:{status}@@
+@@data:template3:status@@
 </table>
 <br /><br />
 

@@ -41,7 +41,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 114
+This is the build 115
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -57,6 +57,10 @@ To do:
 - Windows (lack of) shared memory ?
 
 ----
+
+Build 115 2014/11/11
+- Bug corrected in WATemplate, the loop 'sel' metaelement was not working anymore
+- Modified example of templateloop.php to work again with the loop 'sel' metaelement.
 
 Build 114 2014/10/21
 - Added patterns to WAFile->deleteAll() with * to delete multiple filtered directories
