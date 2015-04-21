@@ -41,7 +41,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 115
+This is the build 116
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -57,6 +57,9 @@ To do:
 - Windows (lack of) shared memory ?
 
 ----
+
+Build 116 2015/04/21
+- in TemplateSource and LanguageSource, the parameter fastobjectsource is now optional
 
 Build 115 2014/11/11
 - Bug corrected in WATemplate, the loop 'sel' metaelement was not working anymore
