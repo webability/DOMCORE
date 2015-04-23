@@ -22,6 +22,7 @@
 
     Changes:
       2015-04-21 Phil, fastobjectsource is now optional
+      2015-04-22 Phil, tm1 and tm2 are now protected
 */
 
 /* @UML_Box -- Do not edit
@@ -50,8 +51,8 @@ class LanguageSource extends DataSource
   protected $fastobjectsource = null;
   protected $loaded = false;
 
-  private $tm1;
-  private $tm2;
+  protected $tm1;
+  protected $tm2;
 
   public function __construct($originsource, $fastobjectsource = null)
   {

@@ -41,7 +41,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 116
+This is the build 117
 
 - To change the build:
   edit WADebug.lib at the beginning and change the version number
@@ -57,6 +57,9 @@ To do:
 - Windows (lack of) shared memory ?
 
 ----
+
+Build 117 2015/04/22
+- The datasources have now the tm1 and tm2 timestamps protected and not private so extended classes can use them
 
 Build 116 2015/04/21
 - in TemplateSource and LanguageSource, the parameter fastobjectsource is now optional
