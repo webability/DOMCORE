@@ -3,7 +3,7 @@ Powerfull code-independant template system,
 multi-language system, debug objects, 
 and patterns implementation in PHP
 
-(c) 2008-2014 Philippe Thomassigny
+(c) 2008-2015 Philippe Thomassigny
 
 DomCore is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ along with DomCore.  If not, see <http://www.gnu.org/licenses/>.
 
 ----
 
-Welcome to DomCore v1.
+Welcome to DomCore v2.
 
 You need to install the DomCore directory into your application somewhere accesible by your scripts to include the php .lib scripts.
 
@@ -41,12 +41,6 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 
 ----
 
-This is the build 117
-
-- To change the build:
-  edit WADebug.lib at the beginning and change the version number
-  change this file and add comments on new build.
-
 To do:
 - more languages
 - more examples temp, lang, datasources, cache
@@ -56,7 +50,22 @@ To do:
 - check how to manage if there is no available shared memory and/or semaphores
 - Windows (lack of) shared memory ?
 
-----
+To change the build:
+  edit WADebug.lib at the beginning and change the version number
+  change this file and add comments on new build.
+
+---
+
+Build V2 - 0 2015-056-03
+
+- Version number change to be RFC versioning complient
+- WADebug syntax is now accepting parameters as variable with '%' into the string, sprintf like.
+  Old version is still compatible.
+  This is not compatible with PHP 5.6+ for global language syntax change. A branch for PHP 5.6+ will be created later
+- Modification of all the debug code to use new syntax with '%'
+- Modification of libraries path into WADebug messages as 'include/core/*'
+
+---
 
 Build 117 2015/04/22
 - The datasources have now the tm1 and tm2 timestamps protected and not private so extended classes can use them

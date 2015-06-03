@@ -80,7 +80,7 @@
 class WADebug
 {
   // DomCore version
-  const VERSION = '1.01.17';
+  const VERSION = '2.0.0';
 
   // All the functions entry
   const SYSTEM = 1;
@@ -266,6 +266,19 @@ class WADebug
 
     if ((self::$debug || $this->localdebug) && $level >= self::$level)
     {
+      $args = null;
+      if (func_num_args() > 2)
+      {
+        $args = func_get_args();
+	unset($args[1]);
+	unset($args[0]);
+      }
+      if (is_array($args))
+      {
+        $num = 1;
+        foreach($args as $arg)
+          $message = str_replace($message, '%', $arg);
+      }
       if (self::$filter && stripos($message, self::$filter) === false)
         return;
       switch(self::$redirect)
