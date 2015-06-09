@@ -66,7 +66,7 @@ class A extends WADebug
   public function setA($newvalue)
   {
     if (self::$debug || $this->localdebug)
-      $this->doDebug("We set new value to A->a : $newvalue.", WADebug::INFO);
+      $this->doDebug("We set new value to A->a : %.", WADebug::INFO, $newvalue);
 
     $this->a = $newvalue;
   }
@@ -87,7 +87,7 @@ class B extends A
   public function setB($newvalue)
   {
     if (self::$debug || $this->localdebug)
-      $this->doDebug("We set new value to B->b: $newvalue.", WADebug::INFO);
+      $this->doDebug("We set new value to B->b: %.", WADebug::INFO, $newvalue);
 
     $this->b = $newvalue;
   }

@@ -67,7 +67,7 @@ class car extends vehicle
   {
     // We could call directly the doDebug method, but making the test here, it's extremely faster for the interpreter
     if (self::$debug || $this->localdebug)
-      $this->doDebug("Method call: car->setColor( $color )", WADebug::USER);
+      $this->doDebug("Method call: car->setColor( % )", WADebug::USER, $color);
 
     $this->color = $color;
   }
@@ -105,7 +105,7 @@ class plane extends vehicle
   {
     // We could call directly the doDebug method, but making the test here, it's extremely faster for the interpreter
     if (self::$debug || $this->localdebug)
-      $this->doDebug("Method call: plane->setColor( $color )", WADebug::USER);
+      $this->doDebug("Method call: plane->setColor( % )", WADebug::USER, $color);
 
     $this->color = $color;
   }
