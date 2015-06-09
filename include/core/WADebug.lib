@@ -277,7 +277,7 @@ class WADebug
       {
         $num = 1;
         foreach($args as $arg)
-          $message = str_replace($message, '%', $arg);
+          $message = str_replace('%', $this->__getValue($arg), $message);
       }
       if (self::$filter && stripos($message, self::$filter) === false)
         return;
