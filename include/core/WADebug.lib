@@ -270,8 +270,8 @@ class WADebug
       if (func_num_args() > 2)
       {
         $args = func_get_args();
-	unset($args[1]);
-	unset($args[0]);
+        unset($args[1]);
+        unset($args[0]);
       }
       if (is_array($args))
       {
@@ -331,6 +331,8 @@ class WADebug
 
   protected function __getValue($val, $indent = 0, $ignore = array())
   {
+    if (is_object($val) && $val instanceOf WABase)
+      return '[Base object]';
     if (is_object($val) && $val instanceOf WADebug)
     {
       return '{<br />'.PHP_EOL.$val->explain($indent+2, $ignore).str_repeat('.', $indent+2).'}';
@@ -403,9 +405,9 @@ class WADebug
       if ($access)
       {
         if ($prop->isStatic())
-          $exp .= ' = '; //. $this->__getValue(self::$$name, $indent, $ignore);
+          $exp .= ' = ' . $this->__getValue(self::$$name, $indent, $ignore);
         else
-          $exp .= ' = '; // . $this->__getValue($this->$name, $indent, $ignore);
+          $exp .= ' = ' . $this->__getValue($this->$name, $indent, $ignore);
       }
       else
       {

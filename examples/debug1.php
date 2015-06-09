@@ -32,7 +32,7 @@
 // We assure any DomCore library we call will be automatically loaded
 include_once '../include/__autoload.lib';
 
-define('WADEBUG', false);
+define('WADEBUG', true);
 
 echo "We are testing this on:<br />";
 echo "DomCore version ".WADebug::VERSION."<br />";
