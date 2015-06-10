@@ -32,7 +32,9 @@
 // We assure any DomCore library we call will be automatically loaded
 include_once '../include/__autoload.lib';
 
-setlocale(LC_ALL, 'es_MX.UTF8', 'es_MX', '');
+setlocale(LC_ALL, 'es_MX.UTF8');
+// We have to set NUMERIC to C on mexican locale, since there is a HUGE bug on the use of , instead or . for numeric coma (we use float numbers later in the code)
+setlocale(LC_NUMERIC, 'C');
 date_default_timezone_set('America/Mexico_City');
 
 define ('WADEBUG', false);
