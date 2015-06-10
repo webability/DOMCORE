@@ -33,6 +33,8 @@
 include_once '../include/__autoload.lib';
 
 define('WADEBUG', false);
+setlocale(LC_ALL, 'es_MX.UTF8', 'es_MX', '');
+date_default_timezone_set('America/Mexico_City');
 
 echo "We are testing this on:<br />";
 echo "DomCore version ".WADebug::VERSION."<br />";

@@ -37,6 +37,8 @@ Then let's call a database connector, and throw an error in spanish if there is 
 include_once '../include/__autoload.lib';
 
 define ('WADEBUG', false);
+setlocale(LC_ALL, 'es_MX.UTF8', 'es_MX', '');
+date_default_timezone_set('America/Mexico_City');
 
 $mymessages = array(
   'database' => 'Error, the database could not be loaded',

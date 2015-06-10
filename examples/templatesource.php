@@ -33,6 +33,8 @@
 include_once '../include/__autoload.lib';
 
 define('WADEBUG', false);
+setlocale(LC_ALL, 'es_MX.UTF8', 'es_MX', '');
+date_default_timezone_set('America/Mexico_City');
 
 echo "We are testing this on:<br />";
 echo "DomCore version ".WADebug::VERSION."<br />";
@@ -55,7 +57,7 @@ $tempsource = new TemplateSource(new FileSource('./', '', 'projects.template'),
 $temp = $tempsource->read();
 
 $data = array(
-  '{title}' => 'Hotels projects:' . $i,
+  '{title}' => 'Hotels projects:',
   'data' => array(
     array('{id}' => 1, '{name}' => 'Paris', '{status}' => 1, '{statusname}' => 'In project', '{flag}' => 'fr.gif'),
     array('{id}' => 2, '{name}' => 'London', '{status}' => 1, '{statusname}' => 'In project', '{flag}' => 'uk.gif'),

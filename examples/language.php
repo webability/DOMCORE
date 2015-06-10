@@ -32,10 +32,9 @@
 // We assure any DomCore library we call will be automatically loaded
 include_once '../include/__autoload.lib';
 
-setlocale(LC_ALL, 'es_MX.UTF8');
-date_default_timezone_set('America/Mexico_City');
-
 define ('WADEBUG', false);
+setlocale(LC_ALL, 'es_MX.UTF8', 'es_MX', '');
+date_default_timezone_set('America/Mexico_City');
 
 $table = <<<EOF
 <?xml version="1.0" encoding="UTF-8" ?>
