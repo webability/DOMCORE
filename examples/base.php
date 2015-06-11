@@ -89,6 +89,28 @@ print $M->getDatabase();
 print "Let's use the configuration:<br />";
 print $M->getConfig();
 
+class myM2 extends WAObject
+{
+  function __construct()
+  {
+    parent::__construct();
+  }
+  
+  function changeDatabase()
+  {
+    $this->base->database = 'new database 2';
+  }
+}
+
+print "Let's build another object to commute the database:<br />";
+$M2 = new myM2();
+$M2->changeDatabase;
+
+print "Let's check the database through the first object:<br />";
+print $M->getDatabase();
+
+print "The base object is generally used to set and get the whole system configuration, database connectors, user conectivity and security, and very global I/O methods for the whole system.<br />";
+
 ?>
 
 <br />
