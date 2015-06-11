@@ -80,14 +80,17 @@ class myM extends WAObject
   }
 }
 
-print "Let's build any object for our application:<br />";
+print "Let's build any object for our application...<br />";
 $M = new myM();
+print "OK<br /><br />";
 
 print "Let's use the database:<br />";
 print $M->getDatabase();
+print "<br /><br />";
 
 print "Let's use the configuration:<br />";
 print $M->getConfig();
+print "OK<br /><br />";
 
 class myM2 extends WAObject
 {
@@ -102,12 +105,14 @@ class myM2 extends WAObject
   }
 }
 
-print "Let's build another object to commute the database:<br />";
+print "Let's build another object to commute the database...<br />";
 $M2 = new myM2();
 $M2->changeDatabase();
+print "OK<br /><br />";
 
 print "Let's check the database through the first object:<br />";
 print $M->getDatabase();
+print "<br /><br />";
 
 print "The base object is generally used to set and get the whole system configuration, database connectors, user conectivity and security, and very global I/O methods for the whole system.<br />";
 
