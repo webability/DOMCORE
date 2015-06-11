@@ -89,7 +89,7 @@ print $M->getDatabase();
 print "<br /><br />";
 
 print "Let's use the configuration:<br />";
-print $M->getConfig();
+print_r($M->getConfig());
 print "OK<br /><br />";
 
 class myM2 extends WAObject
