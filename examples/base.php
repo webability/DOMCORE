@@ -104,7 +104,7 @@ class myM2 extends WAObject
 
 print "Let's build another object to commute the database:<br />";
 $M2 = new myM2();
-$M2->changeDatabase;
+$M2->changeDatabase();
 
 print "Let's check the database through the first object:<br />";
 print $M->getDatabase();
