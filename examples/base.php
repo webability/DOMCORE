@@ -90,7 +90,7 @@ print "<br /><br />";
 
 print "Let's use the configuration:<br />";
 print_r($M->getConfig());
-print "OK<br /><br />";
+print "<br /><br />";
 
 class myM2 extends WAObject
 {
