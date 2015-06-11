@@ -49,12 +49,12 @@ class MyBase extends WABase
     // we connect a database
     $this->database = 'Connector to database 1';
     // we keep the config
-    $this->config;
+    $this->config = $config;
   }
   
   function getConfig()
   {
-    return $config;
+    return $this->config;
   }
 }
 
