@@ -36,6 +36,8 @@ class WABase extends Singleton
   public function __construct()
   {
     parent::__construct();
+    
+    WAObject::setObject($this);
   }
 
 }
