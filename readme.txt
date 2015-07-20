@@ -56,11 +56,11 @@ To change the build:
 
 ---
 
-Build v2.0.1 2015-06-03
+Build v2.0.1 2015-06-10
 - Added the WABase object to build the autoloaded base object for the system -- it links automatically into the WAObject base attribute on constructor. No more need to do it manually.
 - Added the base object demo.
 
-Build v2.0.0 2015-05-03
+Build v2.0.0 2015-06-03
 - Version number change to be RFC versioning complient
 - WADebug syntax is now accepting parameters as variable with '%' into the string, sprintf like.
   Old version is still compatible.
