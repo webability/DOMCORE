@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>Base Object example</h1>
+<h1>\core\WABase Object example</h1>
 
 <?php
 

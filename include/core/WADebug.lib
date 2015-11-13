@@ -380,7 +380,7 @@ class WADebug
       $exp .= str_repeat('.', $indent).'Debug mode is '.(self::$debug?'On':'Off').' and Local Debug is '.($this->localdebug?'On':'Off').PHP_EOL;
     }
 
-    $class = new ReflectionClass($this->getClassName());
+    $class = new \ReflectionClass($this->getClassName());
     $properties = $class->getProperties();
     foreach($properties as $prop)
     {

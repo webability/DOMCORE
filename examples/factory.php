@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>Factory example</h1>
+<h1>\patterns\Factory example</h1>
 
 <?php
 
@@ -67,7 +67,7 @@ class Point
   function get() { return '['.$this->px.','.$this->py.','.$this->pz.']'; }
 }
 
-class myFactory extends Factory
+class myFactory extends \patterns\Factory
 {
   function __construct()
   {

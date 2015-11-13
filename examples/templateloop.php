@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WATemplate loops example</h1>
+<h1>\core\WATemplate loops example</h1>
 <br />
 
 <?php
@@ -108,7 +108,7 @@ $data = array(
   )
 );
 
-$temp = new WATemplate($template);
+$temp = new \core\WATemplate($template);
 
 $temp->metaElements($data, false, true);
 

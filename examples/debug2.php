@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WADebug example</h1>
+<h1>\core\WADebug example</h1>
 
 <?php
 
@@ -37,21 +37,21 @@ setlocale(LC_ALL, 'es_MX.UTF8', 'es_MX', '');
 date_default_timezone_set('America/Mexico_City');
 
 echo "We are testing this on:<br />";
-echo "DomCore version ".WADebug::VERSION."<br />";
-echo "HTML API ? ".(WADebug::getHTMLAPI()?'Yes':'No')."<br />";
-echo "OS Type ? ".(WADebug::getOSType()==WADebug::WINDOWS?'Windows':(WADebug::getOSType()==WADebug::UNIX?'Unix':'Mac'))."<br />";
+echo "DomCore version ".\core\WADebug::VERSION."<br />";
+echo "HTML API ? ".(\core\WADebug::getHTMLAPI()?'Yes':'No')."<br />";
+echo "OS Type ? ".(\core\WADebug::getOSType()==\core\WADebug::WINDOWS?'Windows':(\core\WADebug::getOSType()==\core\WADebug::UNIX?'Unix':'Mac'))."<br />";
 echo "<br />";
 
 // We fix the output on screen in HTML
-WADebug::setRedirect(WADebug::HTMLREDIR, null);
+\core\WADebug::setRedirect(\core\WADebug::HTMLREDIR, null);
 
 // We fix the output to SYSTEM level (all the messages)
-WADebug::setLevel(WADebug::SYSTEM);
+\core\WADebug::setLevel(\core\WADebug::SYSTEM);
 
 // We start debug mode
-WADebug::setDebug(true);
+\core\WADebug::setDebug(true);
 
-class A extends WADebug
+class A extends \core\WADebug
 {
   public $a = 1;
 
@@ -62,13 +62,13 @@ class A extends WADebug
 
     // WE RECOMMEND ALWAYS FILTER THE CALL TO DODEBUG (MUCH FASTER)
     if (self::$debug || $this->localdebug)
-      $this->doDebug("Constructor of A class", WADebug::SYSTEM);
+      $this->doDebug("Constructor of A class", \core\WADebug::SYSTEM);
   }
 
   public function setA($newvalue)
   {
     if (self::$debug || $this->localdebug)
-      $this->doDebug("We set new value to A->a : %.", WADebug::INFO, $newvalue);
+      $this->doDebug("We set new value to A->a : %.", \core\WADebug::INFO, $newvalue);
 
     $this->a = $newvalue;
   }
@@ -83,13 +83,13 @@ class B extends A
     parent::__construct();
 
     if (self::$debug || $this->localdebug)
-      $this->doDebug("Constructor of B class", WADebug::SYSTEM);
+      $this->doDebug("Constructor of B class", \core\WADebug::SYSTEM);
   }
 
   public function setB($newvalue)
   {
     if (self::$debug || $this->localdebug)
-      $this->doDebug("We set new value to B->b: %.", WADebug::INFO, $newvalue);
+      $this->doDebug("We set new value to B->b: %.", \core\WADebug::INFO, $newvalue);
 
     $this->b = $newvalue;
   }
@@ -112,16 +112,16 @@ print $instance2->explain();
 print $instance3->explain();
 
 // We show A and B data
-print $instance1->getNumInstances() . "<br />";
-print $instance1->getUIDInstance() . "<br />";
-print $instance3->getNumInstances() . "<br />";
-print $instance3->getUIDInstance() . "<br />";
+print 'Qt of instances of A: '.$instance1->getNumInstances() . "<br />";
+print 'UID of first A: '.$instance1->getUIDInstance() . "<br />";
+print 'Qt of instances of B: '.$instance3->getNumInstances() . "<br />";
+print 'UID of B: '.$instance3->getUIDInstance() . "<br />";
 
 // We show global debug data
-print WADebug::getNumTotalInstances() . "<br />";
+print 'Total quantity of instances: '.\core\WADebug::getNumTotalInstances() . "<br />";
 
 // We terminate debug session
-WADebug::setDebug(false);
+\core\WADebug::setDebug(false);
 
 ?>
 

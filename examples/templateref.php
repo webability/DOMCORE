@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WATemplate references example</h1>
+<h1>\core\WATemplate references example</h1>
 
 <?php
 
@@ -52,7 +52,7 @@ $template = <<<EOF
 
 EOF;
 
-$temp = new WATemplate($template);
+$temp = new \core\WATemplate($template);
 
 $data = array(
   'title' => 'Blue Martini recipe',

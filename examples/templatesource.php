@@ -37,20 +37,20 @@ setlocale(LC_ALL, 'es_MX.UTF8', 'es_MX', '');
 date_default_timezone_set('America/Mexico_City');
 
 echo "We are testing this on:<br />";
-echo "DomCore version ".WADebug::VERSION."<br />";
-echo "HTML API ? ".(WADebug::getHTMLAPI()?'Yes':'No')."<br />";
-echo "OS Type ? ".(WADebug::getOSType()==WADebug::WINDOWS?'Windows':(WADebug::getOSType()==WADebug::UNIX?'Unix':'Mac'))."<br />";
+echo "DomCore version ".\core\WADebug::VERSION."<br />";
+echo "HTML API ? ".(\core\WADebug::getHTMLAPI()?'Yes':'No')."<br />";
+echo "OS Type ? ".(\core\WADebug::getOSType()==\core\WADebug::WINDOWS?'Windows':(\core\WADebug::getOSType()==\core\WADebug::UNIX?'Unix':'Mac'))."<br />";
 echo "<br />";
 
 $t1 = microtime();
 
 // Start the SHM with 20Mb default size and default ID
-$SHM = new WASHM();
+$SHM = new \core\WASHM();
 
 // Lets create a LanguageSource based on the french messages
-$tempsource = new TemplateSource(new FileSource('./', '', 'projects.template'),
-                                 new FastObjectSource(new FileSource('./', '', 'projectstemplate.afo'),
-                                                      new SHMSource('projectstemplate', $SHM)
+$tempsource = new \datasources\TemplateSource(new FileSource('./', '', 'projects.template'),
+                                 new \datasources\FastObjectSource(new \datasources\FileSource('./', '', 'projectstemplate.afo'),
+                                                      new \datasources\SHMSource('projectstemplate', $SHM)
                                                )
                                  );
 

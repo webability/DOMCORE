@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>Singleton example</h1>
+<h1>\patterns\Singleton example</h1>
 
 <?php
 
@@ -37,7 +37,7 @@ date_default_timezone_set('America/Mexico_City');
 
 define ('WADEBUG', false);
 
-class myS extends Singleton
+class myS extends \patterns\Singleton
 {
   function __construct()
   {
@@ -52,7 +52,7 @@ class myS extends Singleton
 
 print "Let's get our singleton:<br />";
 
-$S = Singleton::getInstance('myS');
+$S = \patterns\Singleton::getInstance('myS');
 // This is totally equivalent to:
 $S = myS::getInstance();
 

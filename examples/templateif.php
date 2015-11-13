@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WATemplate conditional example</h1>
+<h1>\core\WATemplate conditional example</h1>
 
 <?php
 
@@ -61,7 +61,7 @@ N/A
 
 EOF;
 
-$temp = new WATemplate($template);
+$temp = new \core\WATemplate($template);
 
 $data = array(
   'title' => 'Hotels projects:',

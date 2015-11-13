@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WADebug example</h1>
+<h1>\core\WADebug example</h1>
 
 <?php
 

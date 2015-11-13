@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WAMessage example</h1>
+<h1>\core\WAMessage example</h1>
 
 Let's build a basic error messaging system in in spanish.<br />
 Then let's call a database connector, and throw an error in spanish if there is an error (simulated):<br />
@@ -45,11 +45,11 @@ $mymessages = array(
   'config' => 'Error, the configuration file could not be loaded'
 );
 
-WAMessage::addMessages($mymessages);
+\core\WAMessage::addMessages($mymessages);
 // We set core default spanish messages (optional)
-WAMessage::setMessagesFile('../messages/messages.es.xml');
+\core\WAMessage::setMessagesFile('../messages/messages.es.xml');
 // we set our spanish messages ('database' and 'config' entries)
-WAMessage::setMessagesFile('./message.es.xml');
+\core\WAMessage::setMessagesFile('./message.es.xml');
 
 // loading the framework
 // ...
@@ -58,16 +58,16 @@ WAMessage::setMessagesFile('./message.es.xml');
 $configfile = './config.php';
 if (!file_exists($configfile))
 {
-  print WAMessage::getMessage('config');
+  print \core\WAMessage::getMessage('config');
 }
 else
 {
   // load the config file
 
   // We connect to the DB
-  if (!mysql_connect('localhost', $config['username'], $config['password']))
+  if (!mysqli_connect('localhost', $config['username'], $config['password']))
   {
-    throw new WAError(WAMessage::getMessage('database'));
+    throw new \core\WAError(\core\WAMessage::getMessage('database'));
   }
   else
   {

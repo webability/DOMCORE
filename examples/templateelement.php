@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WATemplate elements example</h1>
+<h1>\core\WATemplate elements example</h1>
 
 <h2>Relax mode</h2>
 <?php
@@ -60,7 +60,7 @@ Note the normal elements (added with ->addElement() ) are NOT metaelements,  and
 
 EOF;
 
-$temp = new WATemplate($template);
+$temp = new \core\WATemplate($template);
 
 // the use of addElement, addElements or metaelements for SIMPLE ELEMENTS is exactly the same result, use the one that you prefer based on your needs
 // Only the way to pass through the parameters change.
@@ -121,7 +121,7 @@ Note the normal elements (added with ->addElement() ) are NOT metaelements,  and
 
 EOF;
 
-$temp = new WATemplate($template);
+$temp = new \core\WATemplate($template);
 
 // the use of addElement, addElements or metaelements for SIMPLE ELEMENTS is exactly the same result, use the one that you prefer based on your needs
 // Only the way to pass through the parameters change.

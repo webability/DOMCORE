@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WATrowable examples</h1>
+<h1>\core\WATrowable, \core\WAError examples</h1>
 
 <?php
 
@@ -40,7 +40,7 @@ try
 
   // Connect to the database
   if (1 == 2)
-    throw new WAError('Critical error, database error.');
+    throw new \core\WAError('Critical error, database error.');
 
   try
   {
@@ -52,12 +52,12 @@ try
 
     // insert can throw an EXCEPTION
     if (1 == 1)
-      throw new WAException('Error inserting the data: there is a duplicate key.');
+      throw new \core\WAException('Error inserting the data: there is a duplicate key.');
 
     // DATABASE COMMIT
     // $db->commit();
   }
-  catch (WAException $e)
+  catch (\core\WAException $e)
   {
     // DATABASE ROLLBACK
     // $db->roolback();
@@ -67,9 +67,9 @@ try
   }
 
 }
-catch (Exception $t)
+catch (\Throwable $t)
 {
-  print "There was an error in the application:";
+  print "There was an severe error in the application:";
   print $t;
 }
 

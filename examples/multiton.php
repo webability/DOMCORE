@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>Multiton example</h1>
+<h1>\patterns\Multiton example</h1>
 
 <?php
 
@@ -37,7 +37,7 @@ date_default_timezone_set('America/Mexico_City');
 
 define ('WADEBUG', false);
 
-class myM extends Multiton
+class myM extends \patterns\Multiton
 {
   function __construct($parameter)
   {
@@ -53,7 +53,7 @@ class myM extends Multiton
 print "Let's get our first multiton instance:<br />";
 print "You can get it with a \$M = new myM(10); but this can make an error, you never know if the instance already exists or not. getInstance is the method to use.<br />";
 
-$M = Multiton::getInstance(10, 'myM');
+$M = \patterns\Multiton::getInstance(10, 'myM');
 // This is equivalent to
 $M = myM::getInstance(10);
 
@@ -61,13 +61,13 @@ print "A result with our multiton ".$M->getData() . "<br />";
 
 print "Let's a second multiton instance:<br />";
 
-$M = Multiton::getInstance(15, 'myM');
+$M = \patterns\Multiton::getInstance(15, 'myM');
 
 print "A result with our new multiton ".$M->getData() . "<br />";
 
 print "Let's get back the first multiton instance:<br />";
 
-$M = Multiton::getInstance(10, 'myM');
+$M = \patterns\Multiton::getInstance(10, 'myM');
 
 print "A result with our first multiton ".$M->getData() . "<br />";
 

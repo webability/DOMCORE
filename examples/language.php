@@ -25,7 +25,7 @@
 <a href="../index.html" class="back">&#xAB; Back to the index</a><br />
 <br />
 
-<h1>WALanguage example</h1>
+<h1>\core\WALanguage example</h1>
 
 <?php
 
@@ -51,7 +51,7 @@ $table = <<<EOF
 </language>
 EOF;
 
-$lang = new WALanguage($table);
+$lang = new \core\WALanguage($table);
 
 // print day in spanish/mexico
 print "Hoy es ".$lang->getEntry(strtolower(date("l", time()))) . "<br />";
