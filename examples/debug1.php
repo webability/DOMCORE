@@ -37,12 +37,12 @@ setlocale(LC_ALL, 'es_MX.UTF8', 'es_MX', '');
 date_default_timezone_set('America/Mexico_City');
 
 echo "We are testing this on:<br />";
-echo "DomCore version ".WADebug::VERSION."<br />";
-echo "HTML API ? ".(WADebug::getHTMLAPI()?'Yes':'No')."<br />";
-echo "OS Type ? ".(WADebug::getOSType()==WADebug::WINDOWS?'Windows':(WADebug::getOSType()==WADebug::UNIX?'Unix':'Mac'))."<br />";
+echo "DomCore version ".\core\WADebug::VERSION."<br />";
+echo "HTML API ? ".(\core\WADebug::getHTMLAPI()?'Yes':'No')."<br />";
+echo "OS Type ? ".(\core\WADebug::getOSType()==\core\WADebug::WINDOWS?'Windows':(\core\WADebug::getOSType()==\core\WADebug::UNIX?'Unix':'Mac'))."<br />";
 echo "<br />";
 
-class vehicle extends WADebug
+class vehicle extends \core\WADebug
 {
   protected $speed;
 
@@ -69,7 +69,7 @@ class car extends vehicle
   {
     // We could call directly the doDebug method, but making the test here, it's extremely faster for the interpreter
     if (self::$debug || $this->localdebug)
-      $this->doDebug("Method call: car->setColor( % )", WADebug::USER, $color);
+      $this->doDebug("Method call: car->setColor( % )", \core\WADebug::USER, $color);
 
     $this->color = $color;
   }
@@ -78,7 +78,7 @@ class car extends vehicle
   {
     // We could call directly the doDebug method, but making the test here, it's extremely faster for the interpreter
     if (self::$debug || $this->localdebug)
-      $this->doDebug("Method call: car->getColor()", WADebug::USER);
+      $this->doDebug("Method call: car->getColor()", \core\WADebug::USER);
 
     return $this->color;
   }
@@ -107,7 +107,7 @@ class plane extends vehicle
   {
     // We could call directly the doDebug method, but making the test here, it's extremely faster for the interpreter
     if (self::$debug || $this->localdebug)
-      $this->doDebug("Method call: plane->setColor( % )", WADebug::USER, $color);
+      $this->doDebug("Method call: plane->setColor( % )", \core\WADebug::USER, $color);
 
     $this->color = $color;
   }
@@ -116,7 +116,7 @@ class plane extends vehicle
   {
     // We could call directly the doDebug method, but making the test here, it's extremely faster for the interpreter
     if (self::$debug || $this->localdebug)
-      $this->doDebug("Method call: plane->getColor()", WADebug::USER);
+      $this->doDebug("Method call: plane->getColor()", \core\WADebug::USER);
 
     return $this->color;
   }
@@ -154,7 +154,7 @@ echo "<br />";
 
 // We switch to full debug
 echo "Let's switch global debug On:<br /><br />";
-WADebug::setDebug(true);
+\core\WADebug::setDebug(true);
 
 echo "Let's paint our properties again:<br />";
 $mycar->setColor('orange');
