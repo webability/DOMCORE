@@ -29,6 +29,8 @@
 |------------------------------------------------------------------|
 @End_UML_Box */
 
+namespace core;
+
 class WAError extends WAThrowable
 {}
 

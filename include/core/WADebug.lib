@@ -80,10 +80,12 @@
 |------------------------------------------------------------------|
 @End_UML_Box */
 
+namespace core;
+
 class WADebug
 {
   // DomCore version
-  const VERSION = '2.0.1';
+  const VERSION = '3.0.0';
 
   // All the functions entry
   const SYSTEM = 1;

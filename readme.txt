@@ -1,4 +1,4 @@
-DomCore - The PHP basic classes to build powerfull applications
+DomCore - The PHP foundation classes to build powerfull applications
 Powerfull code-independant template system, 
 multi-language system, debug objects, 
 and patterns implementation in PHP
@@ -20,7 +20,7 @@ along with DomCore.  If not, see <http://www.gnu.org/licenses/>.
 
 ----
 
-Welcome to DomCore v2.
+Welcome to DomCore v3.
 
 You need to install the DomCore directory into your application somewhere accesible by your scripts to include the php .lib scripts.
 
@@ -53,6 +53,14 @@ To do:
 To change the build:
   edit WADebug.lib at the beginning and change the version number
   change this file and add comments on new build.
+
+---
+
+Build v3.0.0 2015-11-13
+- DomCore is now 100% compatible with PHP7
+- DomCore is now based on namespaces
+- Added Singleton::hasInstance() method
+- Added the base object demo.
 
 ---
 

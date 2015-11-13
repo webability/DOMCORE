@@ -52,6 +52,8 @@
 |------------------------------------------------------------------|
 @End_UML_Box */
 
+namespace core;
+
 class WASHM extends WADebug
 {
   private $size = 20971520; // 20 MB by default (1024*1024*20)
@@ -67,7 +69,7 @@ class WASHM extends WADebug
       $this->doDebug("include/core/WASHM->__construct(%, %)", WADebug::SYSTEM, $size, $memid);
 
     if (!function_exists('sem_get'))
-      throw new SHMError(WAMessage::getMessage('WASHM.nosharedmemory'));
+      throw new \throwables\SHMError(WAMessage::getMessage('WASHM.nosharedmemory'));
 
     if ($size)
       $this->size = $size;
@@ -82,7 +84,7 @@ class WASHM extends WADebug
     sem_acquire($this->seg);
     $this->shm = shm_attach($this->memid, $this->size);
     if (!$this->shm)
-      throw new SHMError(WAMessage::getMessage('WASHM.noattach'));
+      throw new \throwables\SHMError(WAMessage::getMessage('WASHM.noattach'));
   }
 
   private function detach()

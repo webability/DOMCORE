@@ -33,8 +33,9 @@
 |------------------------------------------------------------------|
 @End_UML_Box */
 
+namespace core;
 
-class WAThrowable extends Exception
+class WAThrowable extends \Exception
 {
   private $trace = null;
   public $message = null;

@@ -1,9 +1,9 @@
 <?php
 
 /*
-    __autoload.lib, DomCore, the WebAbility(r) Core System
+    __autoload.lib, DomCore, the WebAbility(r) Core System - PHP Foundation Classes
     Contains the auto class loader for PHP
-    (c) 2010 Philippe Thomassigny
+    (c) 2015 Philippe Thomassigny
 
     This file is part of DomCore
 
@@ -23,26 +23,11 @@
 
 function __autoload($classname)
 {
-  $dirs = array(
-    '../include/core/',
-    '../include/patterns/',
-    '../include/datasources/',
-    '../include/throwables/'
-  );
-
-  $found = false;
-  foreach($dirs as $d)
-  {
-    if (is_file($d.$classname.'.lib'))
-    {
-      include_once $d.$classname.'.lib';
-      $found = true;
-      break;
-    }
-  }
+  if (is_file('../include/'.str_replace('\\', '/', $classname).".lib"))
+    include_once '../include/'.str_replace('\\', '/', $classname).".lib";
 
   if (!$found)
-    throw new Exception("The common library <b>$classname</b> doesn't exist.");
+    throw new Error("The common library <b>$classname</b> has not been found.");
 }
 
 ?>

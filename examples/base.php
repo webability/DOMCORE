@@ -37,7 +37,7 @@ date_default_timezone_set('America/Mexico_City');
 
 define ('WADEBUG', false);
 
-class MyBase extends WABase
+class MyBase extends \core\WABase
 {
   public $database;
   private $config;
@@ -62,7 +62,7 @@ print "We create the base object:<br />";
 $base = new MyBase(array('config' => 'something' ));
 print "The base object is automatically assigned to the WAObject static global attibute.<br />";
 
-class myM extends WAObject
+class myM extends \core\WAObject
 {
   function __construct()
   {
@@ -92,7 +92,7 @@ print "Let's use the configuration:<br />";
 print_r($M->getConfig());
 print "<br /><br />";
 
-class myM2 extends WAObject
+class myM2 extends \core\WAObject
 {
   function __construct()
   {
