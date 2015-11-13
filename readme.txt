@@ -60,7 +60,7 @@ Build v3.0.0 2015-11-13
 - DomCore is now 100% compatible with PHP7
 - DomCore is now based on namespaces
 - Added Singleton::hasInstance() method
-- Added the base object demo.
+- WAThrowable is now a trait, so WAError and WAException extends from PHP system \Error and \Exception
 
 ---
 

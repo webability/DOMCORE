@@ -31,7 +31,16 @@
 
 namespace core;
 
-class WAException extends WAThrowable
-{}
+class WAException extends \Exception
+{
+  use WAThrowable;
+
+  function __construct($message = null)
+  {
+    parent::__construct($message);
+  }
+
+
+}
 
 ?>
