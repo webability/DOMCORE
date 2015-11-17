@@ -288,9 +288,10 @@ class WATemplate extends WAClass
         $check = isset($e[4])?$e[4]:null;
         $localelements = $this->getElements($elements, $entry);
         $checkvalue = $check?(isset($localelements[$check])?$localelements[$check]:null):(WATemplate::is_usable($localelements, true)?$localelements:null);
+        $tmp = null;
         if (!$checkvalue)
           $tmp = $this->getTemplate($id.'.none');
-        else
+        elseif (!WATemplate::is_usable($checkvalue) && !is_object($checkvalue)) // not an array, traversable, or object, should be a value.
           $tmp = $this->getTemplate($id.'.'.$checkvalue);
         if (!$tmp)
           $tmp = $this->getTemplate($id);

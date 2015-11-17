@@ -61,6 +61,9 @@ Build v3.0.0 2015-11-13
 - DomCore is now based on namespaces
 - Added Singleton::hasInstance() method
 - WAThrowable is now a trait, so WAError and WAException extends from PHP system \Error and \Exception
+- SHM has been rebuild to work also on filename ftok mapped IDs and do not use a variable map that is slow.
+- Dispatcher pattern added
+- Bug corrected into WATemplate on conditional loops.
 
 ---
 
