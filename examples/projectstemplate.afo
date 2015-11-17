@@ -1,4 +1,4 @@
-C:10:"WATemplate":3303:{a:3:{s:8:"template";s:140:"
+C:15:"core\WATemplate":3363:{a:3:{s:8:"template";s:140:"
 
 <br />
 <b>{title}</b><br />
@@ -12,32 +12,32 @@ C:10:"WATemplate":3303:{a:3:{s:8:"template";s:140:"
 
 
 
-";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"@";i:1;s:27:"@@data:template3:{status}@@";i:2;s:4:"data";i:3;s:9:"template3";i:4;s:8:"{status}";}}s:12:"subtemplates";a:4:{s:15:"template3.key.6";C:10:"WATemplate":686:{a:3:{s:8:"template";s:241:"  <tr style="background-color: #fc0;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
+";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"@";i:1;s:27:"@@data:template3:{status}@@";i:2;s:4:"data";i:3;s:9:"template3";i:4;s:8:"{status}";}}s:12:"subtemplates";a:4:{s:15:"template3.key.6";C:15:"core\WATemplate":696:{a:3:{s:8:"template";s:241:"  <tr style="background-color: #fc0;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
 
 
 
 
-";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"?";i:1;s:15:"??{flag}:flag??";i:2;s:6:"{flag}";i:3;s:4:"flag";i:4;N;}}s:12:"subtemplates";a:2:{s:4:"flag";C:10:"WATemplate":118:{a:3:{s:8:"template";s:37:"<img src="../skins/images/{flag}" />
-";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}s:9:"flag.none";C:10:"WATemplate":84:{a:3:{s:8:"template";s:4:"N/A
-";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}}}}s:15:"template3.sel.3";C:10:"WATemplate":719:{a:3:{s:8:"template";s:274:"  <tr style="background-color: #cfc;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666; font-weight: bold; color: green;">{statusname}</td><td>??{flag}:flag??</td></tr>
+";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"?";i:1;s:15:"??{flag}:flag??";i:2;s:6:"{flag}";i:3;s:4:"flag";i:4;N;}}s:12:"subtemplates";a:2:{s:4:"flag";C:15:"core\WATemplate":118:{a:3:{s:8:"template";s:37:"<img src="../skins/images/{flag}" />
+";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}s:9:"flag.none";C:15:"core\WATemplate":84:{a:3:{s:8:"template";s:4:"N/A
+";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}}}}s:15:"template3.sel.3";C:15:"core\WATemplate":729:{a:3:{s:8:"template";s:274:"  <tr style="background-color: #cfc;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666; font-weight: bold; color: green;">{statusname}</td><td>??{flag}:flag??</td></tr>
 
 
 
 
-";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"?";i:1;s:15:"??{flag}:flag??";i:2;s:6:"{flag}";i:3;s:4:"flag";i:4;N;}}s:12:"subtemplates";a:2:{s:4:"flag";C:10:"WATemplate":118:{a:3:{s:8:"template";s:37:"<img src="../skins/images/{flag}" />
-";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}s:9:"flag.none";C:10:"WATemplate":84:{a:3:{s:8:"template";s:4:"N/A
-";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}}}}s:14:"template3.loop";C:10:"WATemplate":686:{a:3:{s:8:"template";s:241:"  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
+";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"?";i:1;s:15:"??{flag}:flag??";i:2;s:6:"{flag}";i:3;s:4:"flag";i:4;N;}}s:12:"subtemplates";a:2:{s:4:"flag";C:15:"core\WATemplate":118:{a:3:{s:8:"template";s:37:"<img src="../skins/images/{flag}" />
+";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}s:9:"flag.none";C:15:"core\WATemplate":84:{a:3:{s:8:"template";s:4:"N/A
+";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}}}}s:14:"template3.loop";C:15:"core\WATemplate":696:{a:3:{s:8:"template";s:241:"  <tr style="background-color: #bbf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
 
 
 
 
-";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"?";i:1;s:15:"??{flag}:flag??";i:2;s:6:"{flag}";i:3;s:4:"flag";i:4;N;}}s:12:"subtemplates";a:2:{s:4:"flag";C:10:"WATemplate":118:{a:3:{s:8:"template";s:37:"<img src="../skins/images/{flag}" />
-";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}s:9:"flag.none";C:10:"WATemplate":84:{a:3:{s:8:"template";s:4:"N/A
-";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}}}}s:17:"template3.loopalt";C:10:"WATemplate":686:{a:3:{s:8:"template";s:241:"  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
+";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"?";i:1;s:15:"??{flag}:flag??";i:2;s:6:"{flag}";i:3;s:4:"flag";i:4;N;}}s:12:"subtemplates";a:2:{s:4:"flag";C:15:"core\WATemplate":118:{a:3:{s:8:"template";s:37:"<img src="../skins/images/{flag}" />
+";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}s:9:"flag.none";C:15:"core\WATemplate":84:{a:3:{s:8:"template";s:4:"N/A
+";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}}}}s:17:"template3.loopalt";C:15:"core\WATemplate":696:{a:3:{s:8:"template";s:241:"  <tr style="background-color: #ccf;"><td style="border-bottom: 1px dotted #666;">{id}</td><td style="border-bottom: 1px dotted #666;">{name}</td><td style="border-bottom: 1px dotted #666;">{statusname}</td><td>??{flag}:flag??</td></tr>
 
 
 
 
-";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"?";i:1;s:15:"??{flag}:flag??";i:2;s:6:"{flag}";i:3;s:4:"flag";i:4;N;}}s:12:"subtemplates";a:2:{s:4:"flag";C:10:"WATemplate":118:{a:3:{s:8:"template";s:37:"<img src="../skins/images/{flag}" />
-";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}s:9:"flag.none";C:10:"WATemplate":84:{a:3:{s:8:"template";s:4:"N/A
+";s:12:"metaelements";a:1:{i:0;a:5:{i:0;s:1:"?";i:1;s:15:"??{flag}:flag??";i:2;s:6:"{flag}";i:3;s:4:"flag";i:4;N;}}s:12:"subtemplates";a:2:{s:4:"flag";C:15:"core\WATemplate":118:{a:3:{s:8:"template";s:37:"<img src="../skins/images/{flag}" />
+";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}s:9:"flag.none";C:15:"core\WATemplate":84:{a:3:{s:8:"template";s:4:"N/A
 ";s:12:"metaelements";a:0:{}s:12:"subtemplates";a:0:{}}}}}}}}}

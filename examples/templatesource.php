@@ -48,7 +48,7 @@ $t1 = microtime();
 $SHM = new \core\WASHM();
 
 // Lets create a LanguageSource based on the french messages
-$tempsource = new \datasources\TemplateSource(new FileSource('./', '', 'projects.template'),
+$tempsource = new \datasources\TemplateSource(new \datasources\FileSource('./', '', 'projects.template'),
                                  new \datasources\FastObjectSource(new \datasources\FileSource('./', '', 'projectstemplate.afo'),
                                                       new \datasources\SHMSource('projectstemplate', $SHM)
                                                )
