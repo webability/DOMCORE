@@ -31,17 +31,29 @@
 
 namespace core;
 
-class WAError extends \Error
+if (PHP_VERSION_ID < 70000)
 {
-  use WAThrowable;
-  
-  function __construct($message = null)
+  class WAError extends \Exception
   {
-    parent::__construct($message);
+    use WAThrowable;
+    
+    function __construct($message = null)
+    {
+      parent::__construct($message);
+    }
   }
-
-
-  
+}
+else
+{
+  class WAError extends \Error
+  {
+    use WAThrowable;
+    
+    function __construct($message = null)
+    {
+      parent::__construct($message);
+    }
+  }
 }
 
 ?>

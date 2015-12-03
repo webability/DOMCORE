@@ -44,7 +44,7 @@ NL - Dutch language, maintained by Roland van Wanrooy, abo at wanrooy dot be
 To do:
 - more languages
 - more examples temp, lang, datasources, cache
-- patterns: observer, painter, dispatcher, pool, etc.
+- patterns: observer, painter, pool, etc.
 - check SHM object when the class into unserial of the SHM memory does not exists => error ? how to manage ?
    Note: autoload is NOT catchable when shm_get_mem launch it !
 - check how to manage if there is no available shared memory and/or semaphores
@@ -55,6 +55,10 @@ To change the build:
   change this file and add comments on new build.
 
 ---
+
+Build v3.0.1 2015-12-02
+- Many error corrected on namespaces
+- Better support for PHP 7 (Exceptions and Error management)
 
 Build v3.0.0 2015-11-13
 - DomCore is now 100% compatible with PHP7

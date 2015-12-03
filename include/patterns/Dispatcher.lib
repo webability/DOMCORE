@@ -49,9 +49,9 @@ class Dispatcher extends WAObject
   public function dispatch($parameter)
   {
     if (!isset($this->entries[$parameter]))
-      throw new PatternError(WAMessage::getMessage('Dispatcher.noentry').get_class($this));
+      throw new PatternError(\core\WAMessage::getMessage('Dispatcher.noentry').get_class($this));
     if (!method_exists($this, $this->entries[$parameter]))
-      throw new PatternError(WAMessage::getMessage('Dispatcher.nofunction').get_class($this).'->'.$this->entries[$parameter]);
+      throw new PatternError(\core\WAMessage::getMessage('Dispatcher.nofunction').get_class($this).'->'.$this->entries[$parameter]);
     
     $args = func_get_args();
     array_shift($args);

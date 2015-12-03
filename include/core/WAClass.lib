@@ -47,7 +47,7 @@ class WAClass extends WAObject implements \Serializable
   // $data is an array by default
   protected function serial(&$data)
   {
-    throw new \throwables\CoreError(WAMessage::getMessage('WAClass.serial'));
+    throw new \throwables\CoreError(\core\WAMessage::getMessage('WAClass.serial'));
   }
 
   // Do a normal serialize unless the method is overloaded
@@ -64,7 +64,7 @@ class WAClass extends WAObject implements \Serializable
   // $data is the same data as for serializing
   protected function unserial($data)
   {
-    throw new \throwables\CoreError(WAMessage::getMessage('WAClass.unserial'));
+    throw new \throwables\CoreError(\core\WAMessage::getMessage('WAClass.unserial'));
   }
 
   // Do a normal unserialize unless the method is overloaded
