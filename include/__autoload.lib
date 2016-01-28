@@ -24,7 +24,7 @@
 function __autoload($classname)
 {
   // Special incompatibility  
-  if (($classname == 'WAError' || $classname == 'WAException') && PHP_VERSION_ID < 50400)
+  if (($classname == '\core\WAError' || $classname == '\core\WAException') && PHP_VERSION_ID < 50400)
   {
     include_once '../include/'.str_replace('\\', '/', $classname)."NT.lib";
     return;
