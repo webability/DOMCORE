@@ -56,6 +56,11 @@ To change the build:
 
 ---
 
+Build v3.0.2 2016-01-26
+- SHM enhanced when deleting some non-existent variable
+- WAError enhanced to be compatible with PHP 5.2, PHP 5.4 and PHP 7 (3 different incompatible syntaxes)
+- _toString in Throwable Trait enhanced (was not printing the first line of error)
+
 Build v3.0.1 2015-12-02
 - Many error corrected on namespaces
 - Better support for PHP 7 (Exceptions and Error management)
