@@ -1,5 +1,5 @@
 <?php
 
-include_once 'include/__autoload.php';
+include_once 'include/__autoload.lib';
 
 ?>
