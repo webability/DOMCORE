@@ -20,4 +20,4 @@ php:
   # aliased to a recent hhvm version
   - hhvm
 
-script: phpunit --configuration testunit/testunit.xml
+script: phpunit --configuration testunit/testunit.xml testunit
