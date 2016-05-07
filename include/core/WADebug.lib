@@ -37,7 +37,7 @@
 | ! FILEREDIR : 3                                                  |
 | ! WINDOWS : 1                                                    |
 | ! UNIX : 2                                                       |
-| ! MAX : 3                                                        |
+| ! MAC : 3                                                        |
 | - ::numtotalinstances : integer                                  |
 | - ::numinstances : array                                         |
 | - uidinstance : integer                                          |
@@ -85,7 +85,7 @@ namespace core;
 class WADebug
 {
   // DomCore version
-  const VERSION = '3.0.3';
+  const VERSION = '3.0.4';
 
   // All the functions entry
   const SYSTEM = 1;

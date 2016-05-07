@@ -58,9 +58,10 @@ To change the build:
 
 ---
 
-Build v3.0.3 2016-??
+Build v3.0.3 2016-05-07
 - Autoload modified to be SPL compliant.
 - Added travis PHPunit tester
+- Lots of errors corrected on the correct use of \core\WADebug into debugging code
 
 Build v3.0.2 2016-01-26
 - SHM enhanced when deleting some non-existent variable

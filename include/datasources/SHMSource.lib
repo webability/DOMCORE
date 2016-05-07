@@ -47,7 +47,7 @@ class SHMSource extends DataSource
   {
     parent::__construct($id);
     if (self::$debug || $this->localdebug)
-      $this->doDebug("common/SHMSource->__construct($id)", WADebug::SYSTEM);
+      $this->doDebug("common/SHMSource->__construct($id)", \core\WADebug::SYSTEM);
     $this->SHM = $SHM;
   }
 

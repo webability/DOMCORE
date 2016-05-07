@@ -34,8 +34,9 @@
 |------------------------------------------------------------------|
 @End_UML_Box */
 
+namespace patterns;
 
-class Dispatcher extends WAObject
+class Dispatcher extends \core\WAObject
 {
   private $entries = array();
 
