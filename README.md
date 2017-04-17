@@ -5,7 +5,7 @@ and patterns implementation in PHP
 
 [![Build Status](https://travis-ci.org/webability/DOMCORE.svg?branch=master)](https://travis-ci.org/webability/DOMCORE)
 
-(c) 2008-2015 Philippe Thomassigny
+(c) 2008-2017 Philippe Thomassigny
 
 DomCore is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -57,6 +57,20 @@ To change the build:
   change this file and add comments on new build.
 
 ---
+
+Build v3.0.7 2017-04-16
+- Added clearstatcache to the filedatasource write method in case we just created a directory that is not seen by PHP immediatly (may happen)
+- Modification of headers of files to match (c) 2017 and some UML boxes
+- Modification of WASimpleXML compile method: the children subnodes of a node are now into the 'children' array entry
+- Modification of WALanguageCompile to match WASimpleXML XML compiler 
+
+Build v3.0.6 2017-02-03
+- Added implementation of array access, countable, iterable, object access magic functions in WALanguage
+- Modified WASHM to clean the ids of memory segments (trimmed, no spaces, tabs, etc)
+- Exceptions adjust to extend \Exception, no \Error
+
+Build v3.0.5 2017-01-11
+- Remasterization of the library for WA6 and namespaces build available more coherent
 
 Build v3.0.4 2016-05-07
 - Lots of errors corrected on the correct use of \core\WADebug into debugging code
