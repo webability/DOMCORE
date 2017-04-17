@@ -22,6 +22,8 @@ along with DomCore.  If not, see <http://www.gnu.org/licenses/>.
 
 ----
 
+[![Join the chat at https://gitter.im/webability/DOMCORE](https://badges.gitter.im/webability/DOMCORE.svg)](https://gitter.im/webability/DOMCORE?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Welcome to DomCore v3.
 
 You need to install the DomCore directory into your application somewhere accesible by your scripts to include the php .lib scripts.
