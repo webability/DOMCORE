@@ -40,7 +40,7 @@ function WAautoload($classname)
     include_once $BASEDIR . 'include/'.str_replace('\\', '/', $classname).".lib";
     return;
   }
-  throw new \Error("The common library <b>$classname</b> has not been found.");
+  // throw new \Error("The common library <b>$classname</b> has not been found.");
 }
 
 spl_autoload_register('WAautoload');
