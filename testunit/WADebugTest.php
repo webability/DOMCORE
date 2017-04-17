@@ -2,7 +2,7 @@
 
 namespace testunit;
 
-class WADebugTest extends \PHPUnit_Framework_TestCase
+class WADebugTest extends \PHPUnit\Framework\TestCase
 {
   public function testCreate()
   {
