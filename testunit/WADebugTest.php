@@ -2,15 +2,28 @@
 
 namespace testunit;
 
-class WADebugTest extends \PHPUnit\Framework\TestCase
+if (PHP_VERSION_ID >= 70000) // travis PHP unit uses >=3.5 on PHP7+
 {
-  public function testCreate()
+  class WADebugTest extends \PHPUnit\Framework\TestCase
   {
-    $x = new \core\WADebug();
-    var_dump($x);
-    $this->assertEquals('OK', 'OK');
+    public function testCreate()
+    {
+      $x = new \core\WADebug();
+      var_dump($x);
+      $this->assertEquals('OK', 'OK');
+    }
   }
-
 }
-
+else
+{
+  class WADebugTest extends \PHPUnit_Framework_TestCase
+  {
+    public function testCreate()
+    {
+      $x = new \core\WADebug();
+      var_dump($x);
+      $this->assertEquals('OK', 'OK');
+    }
+  }
+}
 ?>
