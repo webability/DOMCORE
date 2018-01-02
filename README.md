@@ -5,7 +5,7 @@ and patterns implementation in PHP
 
 [![Build Status](https://travis-ci.org/webability/DOMCORE.svg?branch=master)](https://travis-ci.org/webability/DOMCORE)
 
-(c) 2008-2017 Philippe Thomassigny
+(c) 2008-2018 Philippe Thomassigny
 
 DomCore is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -57,6 +57,9 @@ To change the build:
   change this file and add comments on new build.
 
 ---
+
+Build v3.0.8 2018-01-02
+- the data portion of an XML entry may come empty, so the WALanguageCompiler code has been modified to avoid a PHP warning
 
 Build v3.0.7 2017-04-16
 - Added clearstatcache to the filedatasource write method in case we just created a directory that is not seen by PHP immediatly (may happen)

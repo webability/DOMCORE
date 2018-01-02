@@ -86,7 +86,7 @@ namespace core;
 class WADebug
 {
   // DomCore version
-  const VERSION = '3.0.7';
+  const VERSION = '3.0.8';
 
   // All the functions entry
   const SYSTEM = 1;

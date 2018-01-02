@@ -22,7 +22,7 @@
     
 Changes:
   2017-04-16: Phil, use of the children node for the compiled language XML (to match changes into WASimpleXML)
-  
+  2018-02-01: Phil, the data portion of an entry may come undefined (if the XML tag is empty, to avoid a PHP warning)
 */
 
 /* @UML_Box
@@ -58,7 +58,7 @@ class WALanguageCompiler
       {
         foreach ($tree['children'] as $k => $value)
         {
-          $TM[$value['attributes']['id']] = $value['data'];
+          $TM[$value['attributes']['id']] = isset($value['data'])?$value['data']:'';
         }
       }
     }
