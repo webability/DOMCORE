@@ -58,6 +58,10 @@ To change the build:
 
 ---
 
+Build v3.0.9 2018-01-05
+- bug corrected on destructor to be sure the shm has been created before its destruction
+- bug corrected into WADebug->doDebug to print correctly the variables passed through '%'
+
 Build v3.0.8 2018-01-02
 - the data portion of an XML entry may come empty, so the WALanguageCompiler code has been modified to avoid a PHP warning
 

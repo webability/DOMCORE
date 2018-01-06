@@ -22,6 +22,7 @@
     
 Changes:
   2015-11-16: Phil, Rewrite the library to be fast, use implicit var mapper and only give support for files (for AFO cache files from datasources). The variables mapper is still available but under specific conditions and optinos.
+  2018-01-05: Phil, but corrected on destructor to be sure the shm has been created before its destruction
 
 */
 
@@ -98,7 +99,8 @@ class WASHM extends WADebug
 
   public function __destruct()
   {
-    shm_detach($this->shm);
+    if ($this->shm)
+      shm_detach($this->shm);
     $this->shm = null;
   }
 
