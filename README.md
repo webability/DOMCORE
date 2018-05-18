@@ -58,6 +58,14 @@ To change the build:
 
 ---
 
+
+Build v3.1.1 2018-05-18
+- WASHM: shm id in hexa is not recognized anymore by PHP7, we have to convert it to an integer if the parameter is passed in hexadecimal string
+- WASHM: attribute numattach added to support reentrant methods (mainly when 'read' builds an object that will call another 'read' on same SHM segment through _wakeup method)
+
+Build v3.1.0 2018-03-25
+- added implementation of attributes for each entry into WALanguage and WALanguageCompiler
+
 Build v3.0.9 2018-01-05
 - bug corrected on destructor to be sure the shm has been created before its destruction
 - bug corrected into WADebug->doDebug to print correctly the variables passed through '%'
