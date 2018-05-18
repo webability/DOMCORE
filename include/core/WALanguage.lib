@@ -239,6 +239,7 @@ class WALanguage extends WAClass implements \ArrayAccess, \Iterator, \Countable
     $data['id'] = $this->id;
     $data['lang'] = $this->lang;
     $data['entries'] = $this->entries;
+    $data['attributes'] = $this->attributes;
   }
 
   protected function unserial($data)
@@ -246,6 +247,7 @@ class WALanguage extends WAClass implements \ArrayAccess, \Iterator, \Countable
     $this->id = $data['id'];
     $this->lang = $data['lang'];
     $this->entries = $data['entries'];
+    $this->attributes = $data['attributes'];
   }
 
   public function __toString()
